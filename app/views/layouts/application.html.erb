@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CAPPS</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">CAPPS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sport</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sport Rules</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">All Games By Sports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tournaments</a>
+      </li>
+    </ul>
+    <button type="button" class="btn btn-danger">Admin Login</button>
+  </div>
+</nav>
+<%= yield %>
+
+</body>
+</html>
