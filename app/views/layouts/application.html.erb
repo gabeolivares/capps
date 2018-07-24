@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
   <%= csrf_meta_tags %>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -17,7 +18,7 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <%= link_to "Home", root_path, class:"nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Sport</a>
@@ -31,10 +32,41 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Tournaments</a>
       </li>
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Schools</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Messages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Locations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Split Teams</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Ref Schedules</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Documents and Rules</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Archives</a>
+      </li>
+      </li>
+      <% end %>
     </ul>
-    <button type="button" class="btn btn-danger">Admin Login</button>
+    <% if !user_signed_in? %>
+      <%= link_to "Admin Login", new_user_session_url, class: 'btn btn-danger' %>
+    <% end %>
+    <% if user_signed_in? %>
+      &nbsp;
+      <%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-danger' %>
+    <% end %>
   </div>
 </nav>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 <%= yield %>
 
 </body>
