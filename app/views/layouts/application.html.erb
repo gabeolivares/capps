@@ -17,7 +17,7 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item <%= 'active' if current_page?(root_path) %>">
         <%= link_to "Home", root_path, class:"nav-link" %>
       </li>
       <li class="nav-item">
@@ -33,8 +33,8 @@
         <a class="nav-link" href="#">Tournaments</a>
       </li>
       <% if user_signed_in? %>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Schools</a>
+      <li class="nav-item <%= 'active' if current_page?(school_index_url) %>">
+          <%= link_to "Schools", school_index_url, class:"nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Messages</a>

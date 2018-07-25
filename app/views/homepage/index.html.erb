@@ -1,0 +1,43 @@
+<div id="school-home-container">
+  <div class="jumbotron" style="text-align:center; box-shadow: 15px 15px #9e9e9e;">
+    <h1 style="font-family: 'Michroma', sans-serif;" class="display-3">CAPPS</h1>
+    <h2>Capital Area Private and Parochial Schools</h2>
+    <hr class="my-4">
+    <h4>To promote and encourage student-athletes to grow and develop in citizenship, character, and good sportsmanship by providing and organizing balanced competition and fair play among member schools.</h4>
+  </div>
+  </br>
+  <h2>Member Schools</h2>
+  <hr class="my-4">
+  <% @school.in_groups_of(4, false).each do |group| %>
+    <div class="row">
+        <% group.each do |s| %>
+          <div class="col-lg-3">
+            <div class="card border-primary mb-3 school-box">
+             <div class="card-header"><h5><%= s.name %></h5></div>
+               <div class="card-body">
+                 <%= s.mascot %></br>
+                  <a href="<%= s.website %>" target="_blank"><%= s.website %></a></br>
+                  <a href="http://maps.google.com/maps?q=<%= s.address %>" target="_blank"><%= s.address %></a></br>
+                 </br>
+               </div>
+             </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
+
+  <!-- <% @school.each do |s| %>
+  <div class="card border-primary mb-3 school-box">
+   <div class="card-header"><%= s.name %></div>
+     <div class="card-body">
+       <%= s.nickname %></br>
+       <%= s.address %></br>
+       <%= s.mascot %></br>
+       <%= s.website %></br>
+     </div>
+   </div>
+  <% end %> -->
+</div>

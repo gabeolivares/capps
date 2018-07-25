@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+body{
+background-color: #dcdcdc;
+}
  .login-form{
    text-align:center;
    width: 80%;
@@ -26,3 +28,27 @@
    margin-top: 40px;
    color: green;
  }
+ .school-box{
+   max-width:100%; !important;
+ }
+#school-container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#create-new-school{
+  text-align:center;
+  width: 80%;
+  margin: 0 auto; width:855px;
+}
+
+#edit-school{
+  text-align:center;
+  width: 80%;
+  margin: 0 auto; width:855px;
+}
+
+#school-home-container{
+  width: 80%;
+  margin: 0 auto;
+}
