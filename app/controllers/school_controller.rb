@@ -1,6 +1,6 @@
 class SchoolController < ApplicationController
   def index
-    @school = School.all
+    @school = School.order(:name)
   end
 
   def new

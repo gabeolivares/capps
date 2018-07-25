@@ -1,5 +1,5 @@
 class HomepageController < ApplicationController
   def index
-    @school = School.all
+    @school = School.order(:name)
   end
 end

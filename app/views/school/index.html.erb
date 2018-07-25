@@ -3,8 +3,7 @@
   <p>There are not any schools currently in the system.</p>
   <% else %>
   <h1 style="text-align:center;">Schools</h1>
-
-
+    <hr class="my-4">
      <% @school.each do |s| %>
      <div class="card border-primary mb-3 school-box">
       <div class="card-header"><h5><%= s.name %></h5></div>
