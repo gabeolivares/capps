@@ -5,23 +5,23 @@
     <h1>Edit <%= @school.name %></h1>
     <div class="field" style="text-align: left;">
       <label for = "school_name">Name</label>:
-      <%= f.text_field 'name', class:"form-control form-control-lg" %>
+      <%= f.text_field 'name',required: true, class:"form-control form-control-lg" %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "school_nickname">Nickname</label>:
-      <%= f.text_field 'nickname', class:"form-control form-control-lg" %>
+      <%= f.text_field 'nickname',required: true, class:"form-control form-control-lg" %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "school_address">Address</label>:
-      <%= f.text_field 'address', class:"form-control form-control-lg" %>
+      <%= f.text_field 'address',required: true, class:"form-control form-control-lg" %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "school_mascot">Mascot</label>:
-      <%= f.text_field 'mascot', class:"form-control form-control-lg" %>
+      <%= f.text_field 'mascot', required: true, class:"form-control form-control-lg" %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "school_website">Website</label>:
-      <%= f.text_field 'website', class:"form-control form-control-lg" %>
+      <%= f.text_field 'website',required: true,  class:"form-control form-control-lg" %>
     </div>
   </br>
 

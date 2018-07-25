@@ -1,20 +1,33 @@
 Rails.application.routes.draw do
-  get 'school/index'
+
+
+
 
   devise_for :users
   get 'homepage/index'
   root 'homepage#index'
   #schools
+  get 'school/index'
   get 'school', to: 'school#index'
   get 'school/list'
   get 'school/new'
   post 'school/create'
   patch 'school/update'
-  get 'school/list'
   get 'school/show'
   get 'school/edit'
   get 'school/delete'
   get 'school/update'
+  #Locations
+  get 'location/index'
+  get 'location', to: 'location#index'
+  get 'location/list'
+  get 'location/new'
+  post 'location/create'
+  patch 'location/update'
+  get 'location/show'
+  get 'location/edit'
+  get 'location/delete'
+  get 'location/update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

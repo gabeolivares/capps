@@ -1,0 +1,22 @@
+<div id="create-new-location">
+  <h1>Add New Location</h1>
+
+  <%= form_tag :action => 'create' do %>
+    <div class="field" style="text-align: left;">
+      <label for = "location_name">Name</label>:
+      <%= text_field 'location', 'name', required: true, class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "school_nickname">Address 1</label>:
+      <%= text_field 'location', 'address1', required: true, class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "school_address">Address 2</label>:
+      <%= text_field 'location', 'address2', required: true, class:"form-control form-control-lg" %>
+    </div>
+  </br>
+  <%= submit_tag "Create" , class:"btn btn-primary btn-lg btn-block"%>
+  <% end -%>
+</br>
+  <%= link_to 'Back', {:action => 'index'} , class:"btn btn-danger btn-lg btn-block" %>
+</div>

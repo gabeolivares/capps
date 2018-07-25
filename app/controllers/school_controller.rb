@@ -2,9 +2,6 @@ class SchoolController < ApplicationController
   def index
     @school = School.all
   end
-  def list
-   @school = School.all
-  end
 
   def new
    @school = School.new
@@ -47,5 +44,4 @@ class SchoolController < ApplicationController
   def school_params
      params.require(:school).permit(:name, :nickname, :address, :mascot, :website)
   end
-
 end

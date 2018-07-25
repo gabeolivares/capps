@@ -52,3 +52,14 @@ background-color: #dcdcdc;
   width: 80%;
   margin: 0 auto;
 }
+
+#location-container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#create-new-location{
+  text-align:center;
+  width: 80%;
+  margin: 0 auto; width:855px;
+}
