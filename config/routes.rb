@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-
-
   devise_for :users
   get 'homepage/index'
   root 'homepage#index'
@@ -28,6 +25,17 @@ Rails.application.routes.draw do
   get 'location/edit'
   get 'location/delete'
   get 'location/update'
+  #Messages
+  get 'message/index'
+  get 'message', to: 'message#index'
+  get 'message/list'
+  get 'message/new'
+  post 'message/create'
+  patch 'message/update'
+  get 'message/show'
+  get 'message/edit'
+  get 'message/delete'
+  get 'message/update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

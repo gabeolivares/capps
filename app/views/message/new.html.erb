@@ -1,0 +1,44 @@
+<div id="create-new-message">
+  <h1>Add New Message</h1>
+
+  <%= form_tag :action => 'create' do %>
+    <div class="field" style="text-align: left;">
+      <label for = "message_title">Title</label>:
+      <%= text_field 'message', 'title', required: true, class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "message_body">Body</label>:
+      <%= text_area 'message', 'body', required: true, class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "message_start_date">Start Date</label>:
+    </br>
+    <%= datetime_select("message", "start_date", prompt: {
+              day: 'Select day', month: 'Select month', year: 'Select year'
+            }, start_year: Time.now.year, order: [:day, :month, :year, :hour,:minute], ampm: true, required: true, class:"form-control form-control-lg" ) %>
+    </br>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "message_end_date">End Date</label>:
+    </br>
+    <%= datetime_select("message", "end_date", prompt: {
+              day: 'Select day', month: 'Select month', year: 'Select year'
+            }, start_year: Time.now.year, order: [:day, :month, :year, :hour,:minute], ampm: true, required: true) %>
+    </br>
+    </div>
+    <div class="field" style="text-align: left;">
+    </br>
+      <label for = "message_home">Display on homepage?</label>:
+    </br>
+      <%= label :home, "Yes", value: true %>
+      <%= radio_button 'message', 'home', true, :value => true %>
+    </br>
+      <%= label :home, "No", value: false %>
+      <%= radio_button 'message', 'home', false, :checked => true, :value => false %>
+    </div>
+  </br>
+  <%= submit_tag "Create" , class:"btn btn-primary btn-lg btn-block"%>
+  <% end -%>
+</br>
+  <%= link_to 'Back', {:action => 'index'} , class:"btn btn-danger btn-lg btn-block" %>
+</div>

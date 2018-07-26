@@ -1,4 +1,17 @@
 <div id="school-home-container">
+  <% if @message.present? %>
+    <div class="alert alert-dismissible alert-danger" style="font-color:#FFF">
+      <h4 class="alert-heading"><%= @message.title %></h4>
+      <p> <%= @message.body %></p>
+      <% if @message.start_date.present? %>
+        <h5>Start Time: <%= @message.start_date.strftime("%A %B %d, %Y at %I:%M %p") %></h5>
+      <% end %>
+      <% if @message.end_date.present? %>
+        <h5>End Time: <%= @message.end_date.strftime("%A %B %d, %Y at %I:%M %p") %></h5>
+      <% end %>
+    </br>
+    </div>
+  <% end %>
   <div class="jumbotron" style="text-align:center; box-shadow: 15px 15px #9e9e9e;">
     <h1 style="font-family: 'Michroma', sans-serif;" class="display-3">CAPPS</h1>
     <h2>Capital Area Private and Parochial Schools</h2>

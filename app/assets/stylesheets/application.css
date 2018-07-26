@@ -63,3 +63,20 @@ background-color: #dcdcdc;
   width: 80%;
   margin: 0 auto; width:855px;
 }
+
+#message-container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#create-new-message{
+  text-align:center;
+  width: 80%;
+  margin: 0 auto; width:855px;
+}
+
+#edit-message{
+  text-align:center;
+  width: 80%;
+  margin: 0 auto; width:855px;
+}

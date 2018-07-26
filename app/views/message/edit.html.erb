@@ -1,0 +1,47 @@
+<div id="edit-message">
+
+  <%= form_for @message, :url =>{:action => "update", :id =>@message} do |f| %>
+    <h1>Edit <%= @message.title %></h1>
+    <div class="field" style="text-align: left;">
+      <label for = "message_title">Title</label>:
+      <%= f.text_field 'title',required: true, class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "message_body">Body</label>:
+      <%= f.text_field 'body',required: true, class:"form-control form-control-lg" %>
+    </div>
+    </br>
+    <div class="field" style="text-align: left;">
+      <label for = "message_start_date">Start Date</label>:
+      </br>
+      <%= f.datetime_select("start_date", prompt: {
+                day: 'Select day', month: 'Select month', year: 'Select year'
+              }, start_year: Time.now.year, order: [:day, :month, :year, :hour,:minute], ampm: true, required: true, class:"form-control form-control-lg" ) %>
+      </br>
+    </div>
+    </br>
+    <div class="field" style="text-align: left;">
+      <label for = "message_end_date">End Date</label>:
+      </br>
+      <%= f.datetime_select("end_date", prompt: {
+                day: 'Select day', month: 'Select month', year: 'Select year'
+              }, start_year: Time.now.year, order: [:day, :month, :year, :hour,:minute], ampm: true, required: true, class:"form-control form-control-lg" ) %>
+      </br>
+    </div>
+    </br>
+    <div class="field" style="text-align: left;">
+      <label for = "message_home">Display on homepage? </label>:
+    </br>
+      <%= label :home, "Yes", value: true %>
+      <%= f.radio_button 'home', true, :checked => @message.home, :value => true %>
+    </br>
+      <%= label :home, "No", value: false %>
+      <%= f.radio_button 'home', false,  :value => false %>
+    </div></br>
+
+  </br>
+  <%= f.submit "Save changes", class:"btn btn-primary btn-lg btn-block" %>
+  <% end %>
+  </br>
+  <%= link_to 'Back', {:action => 'index'} , class:"btn btn-danger btn-lg btn-block" %>
+</div>
