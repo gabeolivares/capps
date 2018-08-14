@@ -80,3 +80,24 @@ background-color: #dcdcdc;
   width: 80%;
   margin: 0 auto; width:855px;
 }
+
+#sport-container{
+  width: 80%;
+  margin: 0 auto;
+}
+#sport-title{
+  text-align:center;
+  background-color: #FFFFFF
+}
+
+
+#conference-standings{
+  text-align: left;
+  padding-left: 5%;
+}
+
+#create-new-school{
+  text-align:center;
+  width: 80%;
+  margin: 0 auto; width:855px;
+}

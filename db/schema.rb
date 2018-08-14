@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180725233706) do
+ActiveRecord::Schema.define(version: 20180810034142) do
+
+  create_table "divisions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer  "opp1"
+    t.integer  "opp2"
+    t.integer  "location"
+    t.boolean  "confrence"
+    t.datetime "date"
+    t.integer  "division"
+    t.integer  "score_opp1"
+    t.integer  "score_opp2"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "sport"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +62,18 @@ ActiveRecord::Schema.define(version: 20180725233706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "sports", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "grade"
+    t.integer  "gender"
+    t.integer  "school_year"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "division_id"
+  end
+
+  add_index "sports", ["division_id"], name: "index_sports_on_division_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

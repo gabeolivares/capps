@@ -2,7 +2,7 @@
   <% if @message.blank? %>
   <p>There are not any messages currently in the system.</p>
   <% else %>
-  <h1 style="text-align:center;">Messages</h1>
+  <h1 style="text-align:center;font-family: 'Michroma', sans-serif;">Messages</h1>
     <hr class="my-4">
      <% @message.each do |s| %>
      <div class="alert alert-dismissible <%= 'alert-primary' if s.home == false %> <%= 'alert-danger' if s.home == true %> " style="font-color:#FFF">

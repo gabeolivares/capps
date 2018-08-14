@@ -1,0 +1,72 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1><%= @sport.name %></h1>
+    <hr class="my-4">
+    <%= image_tag(@sport.id, size: "100x100", style:"text-align:center") %>
+    <h4 style="text-align:left;"> 5th/6th Grade:</h4>
+    <ul class="pagination">
+      <% @divisions_one.each do |d| %>
+      <li class="page-item">
+        <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+      </li>
+      <% end %>
+    </ul>
+  </br>
+  <h4 style="text-align:left;"> 7th/8th Grade:</h4>
+    <ul class="pagination">
+      <% @divisions_two.each do |d| %>
+      <li class="page-item">
+        <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+      </li>
+      <% end %>
+    </ul>
+    <% unless @division_name.blank? %>
+      <h1>Division: <%= @division_name %> </h1>
+    <% end %>
+    <% unless @division_grade.blank? %>
+      <h1>Grade: <%= @division_grade %><h1>
+    <% end %>
+    <div id="conference-standings">
+      <% unless @division_name.blank? && @division_grade.blank? %>
+        <h3> <%= @division_grade %> <%= @division_name %>  Conference Standings</h3>
+      <% end %>
+    </div>
+    <% if @games.blank? %>
+    <h5>There are not any games currently scheduled.</h5>
+    <% else %>
+    <h5 style="text-align:center; font-family: 'Michroma', sans-serif;">Games</h5>
+      <hr class="my-4">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-light">
+            <th scope="col">Date</th>
+            <th scope="col">Location</th>
+            <th scope="col">Time</th>
+            <th scope="col">Team 1</th>
+            <th scope="col">Team 2</th>
+            <th scope="col">Conf</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |g| %>
+          <tr class="table-light">
+            <td><%= g.time.strftime("%B %d, %Y") %></td>
+            <td><%= Location.where(id: g.location).first.name %></td>
+            <td><%= g.time.strftime("%I:%M %p") %></td>
+            <td><%= g.opp1 %></td>
+            <td><%= g.opp2 %></td>
+            <td><%= g.confrence %></td>
+            <td style="float:right;">
+
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    <% unless @division_name.blank? && @division_grade.blank? %>
+      <%= link_to "Add New Game", {:action => 'new', :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}, class:"btn btn-primary btn-lg"%>
+      <% end %>
+  </div>
+  </div>

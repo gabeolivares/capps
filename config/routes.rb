@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sport/index'
+
   devise_for :users
   get 'homepage/index'
   root 'homepage#index'
@@ -36,6 +38,16 @@ Rails.application.routes.draw do
   get 'message/edit'
   get 'message/delete'
   get 'message/update'
+  #Sport
+  get 'sport/index'
+  get 'sport', to: 'sport#index'
+  get 'sport/list'
+  patch 'sport/update'
+  get 'sport/show'
+  get 'sport/new'
+  post 'sport/create'
+
+  post 'game/create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
