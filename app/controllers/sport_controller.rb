@@ -5,7 +5,7 @@ class SportController < ApplicationController
 
   def new
     @locations = Location.all.order(:name)
-    p @locations
+
    @sport = Sport.new
   end
 
@@ -14,30 +14,26 @@ class SportController < ApplicationController
   end
 
   def create
-
     div_name = params['division_name']
     div_grade = params['division_grade']
     sport_id = params['sport_id']
     @division = Division.find_by(name: div_name, grade: div_grade)
-    p @division
-    p @division.id
     #if division nil?
     #if sport nil error message_end_date
     #ALSO APPEND TO GAME PARAM AS DIVISION BUT APPEND ID
 
-    p game_param
-    p sport_id
+
     game = game_param
     game[:division] = @division.id
     game[:sport] = sport_id
-    p game
+
     @game = Game.new(game)
 
     if @game.save
-       redirect_to :action => 'index'
+       redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
     else
        @game = Game.all
-       render :action => 'index'
+       render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
     end
 
   end
@@ -60,20 +56,25 @@ class SportController < ApplicationController
     @division_grade = "7th & 8th Grade" if params[:division_grade] == "2"
     @division_grade_id = params[:division_grade]
     @division_id = Division.find_by(name: @division_name, grade: params[:division_grade])
-    p @division_id
 
     @games = Game.where(division: @division_id, sport: params[:id]).order(:time)
-    p @games
     @sport = Sport.find(params[:id])
   end
   def sport_param
       params.require(:sport).permit(:name, :nickname, :address, :mascot, :website)
    end
 
-  def delete
-   Sport.find(params[:id]).destroy
-   redirect_to :action => 'index'
-  end
+   def delete
+     div_name = params['division_name']
+     div_grade = params['division_grade']
+     sport_id = params['sport_id']
+     game_id = params['game_id']
+
+     Game.find(game_id).destroy
+
+     redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+   end
+
   def game_param
       params.require(:game).permit(:opp1, :opp2, :location, :time, :confrence)
    end

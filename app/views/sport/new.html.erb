@@ -4,11 +4,11 @@
   <%= form_tag :action => 'create' do %>
     <div class="field" style="text-align: left;">
       <label for = "opponent1">Opponent 1</label>:
-      <%= text_field 'game', 'opp1', required: true, class:"form-control form-control-lg" %>
+      <%= collection_select(:game, :opp1, School.all.order(:name), :id, :name, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "opponent2">Opponent 2</label>:
-      <%= text_field 'game', 'opp2', required: true, class:"form-control form-control-lg" %>
+      <%= collection_select(:game, :opp2, School.all.order(:name), :id, :name, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "game_location">Location</label>:
