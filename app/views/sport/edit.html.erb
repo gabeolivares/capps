@@ -1,14 +1,22 @@
 <div id="create-new-school">
-  <h1>Add New Game</h1>
+  <h1>Edit Game</h1>
 
-  <%= form_tag :action => 'create' do %>
+  <%= form_for @game, :url =>{:action => "update", :id =>@game} do |f| %>
     <div class="field" style="text-align: left;">
       <label for = "opponent1">Opponent 1</label>:
       <%= collection_select(:game, :opp1, School.all.order(:name), :id, :name, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
+      <label for = "message_body">Opponent 1 Score</label>:
+      <%= f.number_field 'score_opp1', class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
       <label for = "opponent2">Opponent 2</label>:
       <%= collection_select(:game, :opp2, School.all.order(:name), :id, :name, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "message_body">Opponent 2 Score</label>:
+      <%= f.number_field 'score_opp2', class:"form-control form-control-lg" %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "game_location">Location</label>:
@@ -36,8 +44,8 @@
     <%= hidden_field_tag "division_grade", params['division_grade'] %>
     <%= hidden_field_tag "sport_id", params['sport_id'] %>
   </br>
-  <%= submit_tag "Create", class:"btn btn-primary btn-lg btn-block"%>
+  <%= submit_tag "Update Game", class:"btn btn-primary btn-lg btn-block"%>
   <% end -%>
 </br>
-  <%= link_to 'Back', {:action => 'show', id: params['sport_id']} , class:"btn btn-danger btn-lg btn-block" %>
+  <%= link_to 'Back', {:action => 'show', id: '1'} , class:"btn btn-danger btn-lg btn-block" %>
 </div>

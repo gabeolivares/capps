@@ -10,7 +10,8 @@ class SportController < ApplicationController
   end
 
   def edit
-    @sport = Sport.find(params[:id])
+    game_id = params['game_id']
+    @game = Game.find(game_id)
   end
 
   def create
@@ -39,13 +40,24 @@ class SportController < ApplicationController
   end
 
   def update
-   @sport = Sport.find(params[:id])
+    div_name = params['division_name']
+    div_grade = params['division_grade']
+    sport_id = params['sport_id']
+    game_id = params[:id]
+    @division = Division.find_by(name: div_name, grade: div_grade)
 
-   if @sport.update_attributes(sport_param)
-      redirect_to :action => 'index', :id => @sport
-   else
-      render :action => 'edit'
-   end
+    game = game_update_param
+    game[:division] = @division.id
+    game[:sport] = sport_id
+
+    @game = Game.find(game_id)
+
+    if @game.update_attributes(game)
+       redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+    else
+       @game = Game.all
+       render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+    end
   end
 
   def show
@@ -77,7 +89,11 @@ class SportController < ApplicationController
 
   def game_param
       params.require(:game).permit(:opp1, :opp2, :location, :time, :confrence)
-   end
+  end
+  def game_update_param
+      params.require(:game).permit(:opp1,:score_opp1, :opp2, :score_opp2, :location, :time, :confrence)
+  end
+
   def sport_params
      params.require(:sport).permit(:name, :nickname, :address, :mascot, :website)
   end
