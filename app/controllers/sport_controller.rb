@@ -19,24 +19,25 @@ class SportController < ApplicationController
     div_grade = params['division_grade']
     sport_id = params['sport_id']
     @division = Division.find_by(name: div_name, grade: div_grade)
-    #if division nil?
-    #if sport nil error message_end_date
-    #ALSO APPEND TO GAME PARAM AS DIVISION BUT APPEND ID
 
+    unless (params['game']['time(1i)'] == "" || params['game']['time(2i)'] == "" || params['game']['time(3i)'] == "")
+      game = game_param
+      game[:division] = @division.id
+      game[:sport] = sport_id
 
-    game = game_param
-    game[:division] = @division.id
-    game[:sport] = sport_id
+      @game = Game.new(game)
 
-    @game = Game.new(game)
-
-    if @game.save
-       redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+      if @game.save
+         redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      else
+         @game = Game.all
+         flash[:error] = "Error creating game"
+         render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      end
     else
-       @game = Game.all
-       render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+      flash[:error] = "We were unable to create the game. Please make sure all fields are filled."
+      redirect_to :back
     end
-
   end
 
   def update
@@ -46,17 +47,24 @@ class SportController < ApplicationController
     game_id = params[:id]
     @division = Division.find_by(name: div_name, grade: div_grade)
 
-    game = game_update_param
-    game[:division] = @division.id
-    game[:sport] = sport_id
+    unless (params['game']['time(1i)'] == "" || params['game']['time(2i)'] == "" || params['game']['time(3i)'] == "")
+      game = game_update_param
+      game[:division] = @division.id
+      game[:sport] = sport_id
 
-    @game = Game.find(game_id)
+      @game = Game.find(game_id)
 
-    if @game.update_attributes(game)
-       redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+      if @game.update_attributes(game)
+         redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      else
+         @game = Game.all
+         flash[:error] = "We were unable to update the game. Please make sure all fields are filled."
+         render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      end
     else
-       @game = Game.all
-       render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+
+      flash[:error] = "We were unable to update the game. Please make sure all fields are filled."
+      redirect_to :back
     end
   end
 
@@ -84,7 +92,7 @@ class SportController < ApplicationController
 
      Game.find(game_id).destroy
 
-     redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade
+     redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
    end
 
   def game_param

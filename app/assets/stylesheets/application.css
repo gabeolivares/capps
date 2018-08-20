@@ -16,6 +16,10 @@
 body{
 background-color: #dcdcdc;
 }
+  .alert-message{
+    color:red;
+    text-align: center;
+  }
  .login-form{
    text-align:center;
    width: 80%;

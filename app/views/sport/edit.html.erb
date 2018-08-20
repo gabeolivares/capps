@@ -4,7 +4,7 @@
   <%= form_for @game, :url =>{:action => "update", :id =>@game} do |f| %>
     <div class="field" style="text-align: left;">
       <label for = "opponent1">Opponent 1</label>:
-      <%= collection_select(:game, :opp1, School.all.order(:name), :id, :name, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
+      <%= collection_select(:game, :opp1, School.all.order(:name), :id, :nickname, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "message_body">Opponent 1 Score</label>:
@@ -12,7 +12,7 @@
     </div>
     <div class="field" style="text-align: left;">
       <label for = "opponent2">Opponent 2</label>:
-      <%= collection_select(:game, :opp2, School.all.order(:name), :id, :name, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
+      <%= collection_select(:game, :opp2, School.all.order(:name), :id, :nickname, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "message_body">Opponent 2 Score</label>:
@@ -35,15 +35,18 @@
       <label for = "message_home">Confrence Game </label>:
     </br>
       <%= label :home, "Yes", value: true %>
-      <%= radio_button 'game', 'confrence', true, :value => true %>
+      <%= f.radio_button 'confrence', true,:checked => @game.confrence, :value => true %>
     </br>
       <%= label :home, "No", value: false %>
-      <%= radio_button 'game', 'confrence', false, :checked => true, :value => false %>
+      <%= f.radio_button 'confrence', false, :value => false %>
     </div></br>
     <%= hidden_field_tag "division_name", params['division_name'] %>
     <%= hidden_field_tag "division_grade", params['division_grade'] %>
     <%= hidden_field_tag "sport_id", params['sport_id'] %>
   </br>
+  <% flash.each do |key, value| %>
+    <div class="alert-message"><%= value %></div>
+  <% end %>
   <%= submit_tag "Update Game", class:"btn btn-primary btn-lg btn-block"%>
   <% end -%>
 </br>

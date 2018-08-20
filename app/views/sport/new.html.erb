@@ -4,11 +4,11 @@
   <%= form_tag :action => 'create' do %>
     <div class="field" style="text-align: left;">
       <label for = "opponent1">Opponent 1</label>:
-      <%= collection_select(:game, :opp1, School.all.order(:name), :id, :name, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
+      <%= collection_select(:game, :opp1, School.all.order(:name), :id, :nickname, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "opponent2">Opponent 2</label>:
-      <%= collection_select(:game, :opp2, School.all.order(:name), :id, :name, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
+      <%= collection_select(:game, :opp2, School.all.order(:name), :id, :nickname, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "game_location">Location</label>:
@@ -18,24 +18,27 @@
     <div class="field" style="text-align: left;">
       <label for = "message_end_date">End Date</label>:
       </br>
-      <%= datetime_select("game", "time", prompt: {
+      <%= datetime_select("game", "time", required: true, prompt: {
                 day: 'Select day', month: 'Select month', year: 'Select year'
-              }, start_year: Time.now.year, order: [:month, :day, :year, :hour,:minute], ampm: true, required: true, class:"form-control form-control-lg" ) %>
+              }, start_year: Time.now.year, order: [:month, :day, :year, :hour,:minute], ampm: true, class:"form-control form-control-lg" ) %>
       </br>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "message_home">Confrence Game </label>:
     </br>
       <%= label :home, "Yes", value: true %>
-      <%= radio_button 'game', 'confrence', true, :value => true %>
+      <%= radio_button 'game', 'confrence', true, :checked => true, :value => true %>
     </br>
       <%= label :home, "No", value: false %>
-      <%= radio_button 'game', 'confrence', false, :checked => true, :value => false %>
+      <%= radio_button 'game', 'confrence', false, :value => false %>
     </div></br>
     <%= hidden_field_tag "division_name", params['division_name'] %>
     <%= hidden_field_tag "division_grade", params['division_grade'] %>
     <%= hidden_field_tag "sport_id", params['sport_id'] %>
   </br>
+  <% flash.each do |key, value| %>
+    <div class="alert-message"><%= value %></div>
+  <% end %>
   <%= submit_tag "Create", class:"btn btn-primary btn-lg btn-block"%>
   <% end -%>
 </br>

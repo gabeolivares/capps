@@ -51,6 +51,9 @@ Rails.application.routes.draw do
   post 'game/create'
   get 'game/delete', to: 'sport#delete'
   get 'sport/edit'
+
+  #Rules
+    get 'sport_rules/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
