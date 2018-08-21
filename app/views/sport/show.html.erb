@@ -26,6 +26,7 @@
     <% unless @division_grade.blank? %>
       <h1>Grade: <%= @division_grade %><h1>
     <% end %>
+    <% unless @games.blank? %>
       <% unless @division_name.blank? && @division_grade.blank? %>
         <h5 style="text-align:center; font-family: 'Michroma', sans-serif;"> <%= @division_grade %> <%= @division_name %>  Conference Standings</h5>
         <table class="table table-hover">
@@ -35,21 +36,24 @@
               <th scope="col">Wins</th>
               <th scope="col">Losses</th>
               <th scope="col">Ties</th>
+              <th scope="col">Winning %</th>
             </tr>
           </thead>
           <tbody>
-            <% @teams.each do |t| %>
+            <% sorted_team = @teams.sort_by{|k| -k[:percentage] } %>
+            <% sorted_team.each do |t| %>
                 <tr class="table-light">
                   <td><%= t[:school] %></td>
                   <td><%= t[:wins] %></td>
                   <td><%= t[:losses] %></td>
                   <td><%= t[:ties] %></td>
+                  <td><%= t[:percentage]%></td>
                 </tr>
             <% end %>
           </tbody>
         </table>
        <% end %>
-
+      <% end %>
 
     <% if @games.blank? %>
       <h5>There are not any games currently scheduled.</h5>
@@ -79,9 +83,9 @@
             <td><%= g.time.strftime("%B %d, %Y") %></td>
             <td><%= Location.where(id: g.location).first.name %></td>
             <td><%= g.time.strftime("%I:%M %p") %></td>
-            <td><%= School.where(id: g.opp1).first.name %></td>
+            <td><%= School.where(id: g.opp1).first.nickname %></td>
             <td><%= g.score_opp1 %></td>
-            <td><%= School.where(id: g.opp2).first.name %></td>
+            <td><%= School.where(id: g.opp2).first.nickname %></td>
             <td><%= g.score_opp2 %></td>
             <td><%= g.confrence ? "Y" : "N" %></td>
             <% if user_signed_in? %>

@@ -82,15 +82,24 @@ class SportController < ApplicationController
 
     @teams = []
     @games.each do |g|
-      standings(g.opp1, g, 1, @teams)
-      standings(g.opp2, g, 2, @teams)
+      standings(g.opp1, g, 1, @teams) if g.confrence == true
+      standings(g.opp2, g, 2, @teams) if g.confrence == true
+    end
+
+    @teams.each do |t|
+      percentage = (t[:wins] + (0.5 * t[:ties])) / (t[:wins] + t[:losses] + t[:ties]) * 100.00
+      if percentage.nan?
+        t[:percentage] = 0
+      else
+        t[:percentage] = percentage
+      end
     end
 
   end
 
 
   def standings(team, g, num, teams)
-    school = School.where(id: team).first.name
+    school = School.where(id: team).first.nickname
     if teams.any? {|t| t[:school] == school}
       update_team = teams.select {|t| t[:school] == school }
       ut = update_team.first
