@@ -26,14 +26,35 @@
     <% unless @division_grade.blank? %>
       <h1>Grade: <%= @division_grade %><h1>
     <% end %>
-    <div id="conference-standings">
       <% unless @division_name.blank? && @division_grade.blank? %>
-        <h3> <%= @division_grade %> <%= @division_name %>  Conference Standings</h3>
-      <% end %>
-    </div>
+        <h5 style="text-align:center; font-family: 'Michroma', sans-serif;"> <%= @division_grade %> <%= @division_name %>  Conference Standings</h5>
+        <table class="table table-hover">
+          <thead>
+            <tr class="table-light">
+              <th scope="col">Team</th>
+              <th scope="col">Wins</th>
+              <th scope="col">Losses</th>
+              <th scope="col">Ties</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @teams.each do |t| %>
+                <tr class="table-light">
+                  <td><%= t[:school] %></td>
+                  <td><%= t[:wins] %></td>
+                  <td><%= t[:losses] %></td>
+                  <td><%= t[:ties] %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+       <% end %>
+
+
     <% if @games.blank? %>
       <h5>There are not any games currently scheduled.</h5>
     <% else %>
+
     <h5 style="text-align:center; font-family: 'Michroma', sans-serif;">Games</h5>
       <hr class="my-4">
       <table class="table table-hover">

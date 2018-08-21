@@ -79,7 +79,93 @@ class SportController < ApplicationController
 
     @games = Game.where(division: @division_id, sport: params[:id]).order(:time)
     @sport = Sport.find(params[:id])
+
+    @teams = []
+    @games.each do |g|
+      p "here"
+      p @teams
+      standings(g.opp1, g, 1, @teams)
+
+      standings(g.opp2, g, 2, @teams)
+
+    end
+
   end
+
+
+  def standings(team, g, num, teams)
+    p 'teams'
+
+    school = School.where(id: team).first.name
+    p teams.any? {|h| h[:school] == school}
+    if teams.any? {|t| t[:school] == school}
+      update_team = teams.select {|t| t[:school] == school }
+      ut = update_team.first
+      wins = ut[:wins]
+      losses = ut[:losses]
+      ties = ut[:ties]
+      g.score_opp1 = 0 if g.score_opp1.nil?
+      g.score_opp2 = 0  if g.score_opp2.nil?
+
+      if num == 1
+        if g.score_opp1 > g.score_opp2
+          wins += 1
+        elsif g.score_opp1 < g.score_opp2
+          losses += 1
+        elsif g.score_opp1 == g.score_opp2
+          ties += 1 unless (g.score_opp1 && g.score_opp2 == 0)
+        end
+      end
+
+      if num == 2
+        if g.score_opp2 > g.score_opp1
+          wins += 1
+        elsif g.score_opp2 < g.score_opp1
+          losses += 1
+        elsif g.score_opp2 == g.score_opp1
+          ties += 1 unless (g.score_opp1 && g.score_opp2 == 0)
+        end
+      end
+
+      team = {school: school, wins: wins, losses: losses, ties: ties}
+
+      @teams.find{|t| t[:school] == school}[:wins] = wins
+      @teams.find{|t| t[:school] == school}[:losses] = losses
+      @teams.find{|t| t[:school] == school}[:ties] = ties
+    else
+      wins = 0
+      losses = 0
+      ties = 0
+      g.score_opp1 = 0 if g.score_opp1.nil?
+      g.score_opp2 = 0  if g.score_opp2.nil?
+
+      if num == 1
+        if g.score_opp1 > g.score_opp2
+          wins += 1
+        elsif g.score_opp1 < g.score_opp2
+          losses += 1
+        elsif g.score_opp1 == g.score_opp2
+          ties += 1 unless (g.score_opp1 && g.score_opp2 == 0)
+        end
+      end
+
+      if num == 2
+        if g.score_opp2 > g.score_opp1
+          wins += 1
+        elsif g.score_opp2 < g.score_opp1
+          losses += 1
+        elsif g.score_opp2 == g.score_opp1
+          ties += 1 unless (g.score_opp1 && g.score_opp2 == 0)
+        end
+      end
+
+      team = {school: school, wins: wins, losses: losses, ties: ties}
+
+      @teams.push(team)
+    end
+      p @team
+  end
+
   def sport_param
       params.require(:sport).permit(:name, :nickname, :address, :mascot, :website)
    end
