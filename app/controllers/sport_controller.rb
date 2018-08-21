@@ -91,7 +91,7 @@ class SportController < ApplicationController
       if percentage.nan?
         t[:percentage] = 0
       else
-        t[:percentage] = percentage
+        t[:percentage] = percentage.round(2)
       end
     end
 
