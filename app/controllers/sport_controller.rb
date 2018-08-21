@@ -82,22 +82,15 @@ class SportController < ApplicationController
 
     @teams = []
     @games.each do |g|
-      p "here"
-      p @teams
       standings(g.opp1, g, 1, @teams)
-
       standings(g.opp2, g, 2, @teams)
-
     end
 
   end
 
 
   def standings(team, g, num, teams)
-    p 'teams'
-
     school = School.where(id: team).first.name
-    p teams.any? {|h| h[:school] == school}
     if teams.any? {|t| t[:school] == school}
       update_team = teams.select {|t| t[:school] == school }
       ut = update_team.first
@@ -163,7 +156,6 @@ class SportController < ApplicationController
 
       @teams.push(team)
     end
-      p @team
   end
 
   def sport_param
