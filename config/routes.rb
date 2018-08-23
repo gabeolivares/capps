@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   get 'sport/index'
 
   devise_for :users
@@ -46,7 +48,11 @@ Rails.application.routes.draw do
   get 'sport/show'
   get 'sport/new'
   post 'sport/create'
-
+ #All AllSports
+   get 'all_sports/index'
+   get 'all_sports', to: 'sport#index'
+   get 'all_sports/list'
+   get 'all_sports/show'
   #Game
   post 'game/create'
   get 'game/delete', to: 'sport#delete'

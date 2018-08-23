@@ -21,7 +21,7 @@
           <h5>This message is currently being displayed on the homepage. Click 'Edit' to change.</h5>
       <% end %>
        <%= link_to 'Edit', {:action => "edit", :id => s.id}, class:"btn btn-primary btn-lg" %>
-       <%= link_to "Delete", {:action => 'delete', :id => s.id}, class:"btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this school?"}  %>
+       <%= link_to "Delete", {:action => 'delete', :id => s.id}, class:"btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this message?"}  %>
      </div>
      <% end %>
   <% end %>

@@ -26,8 +26,8 @@
       <li class="nav-item <%= 'active' if current_page?(sport_rules_index_path) %>">
           <%= link_to "Sport Rules", sport_rules_index_path, class:"nav-link" %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">All Games By Sports</a>
+      <li class="nav-item <%= 'active' if current_page?(all_sports_index_path) %>">
+          <%= link_to "All Games by Sports", all_sports_index_path, class:"nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Tournaments</a>

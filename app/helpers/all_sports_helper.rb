@@ -1,0 +1,2 @@
+module AllSportsHelper
+end

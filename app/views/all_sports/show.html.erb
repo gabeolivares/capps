@@ -1,0 +1,55 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1><%= @sport.name %></h1>
+    <hr class="my-4">
+    <%= image_tag(@sport.id, size: "100x100", style:"text-align:center") %>
+
+    <% if @game.blank? %>
+      <h5>There are not any games currently scheduled.</h5>
+    <% else %>
+    <br>
+    <br>
+    <h5 style="text-align:center; font-family: 'Michroma', sans-serif;">Games</h5>
+      <hr class="my-4">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-light">
+            <th scope="col">Date</th>
+            <th scope="col">Location</th>
+            <th scope="col">Time</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Divison</th>
+            <th scope="col">Team 1</th>
+            <th scope="col">Team 1 Score</th>
+            <th scope="col">Team 2</th>
+            <th scope="col">Team 2 Score</th>
+            <th scope="col">Conf</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @game.each do |g| %>
+          <tr class="table-light">
+            <td><%= g.time.strftime("%B %d, %Y") %></td>
+            <td><%= Location.where(id: g.location).first.name %></td>
+            <td><%= g.time.strftime("%I:%M %p") %></td>
+            <td>
+              <% if Division.where(id: g.division).first.grade == 1 %>
+                5th/6th
+                <% else %>
+                7th/8th
+                <% end %>
+
+            </td>
+            <td><%= Division.where(id: g.division).first.name %></td>
+            <td><%= School.where(id: g.opp1).first.nickname %></td>
+            <td><%= g.score_opp1 %></td>
+            <td><%= School.where(id: g.opp2).first.nickname %></td>
+            <td><%= g.score_opp2 %></td>
+            <td><%= g.confrence ? "Y" : "N" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+  </div>
+  </div>
