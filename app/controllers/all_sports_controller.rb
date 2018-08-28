@@ -6,5 +6,4 @@ class AllSportsController < ApplicationController
     @sport = Sport.find(params[:id])
     @game = Game.where(sport: params[:id]).order(:time)
   end
-
 end
