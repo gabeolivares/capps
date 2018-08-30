@@ -99,7 +99,7 @@ class SportController < ApplicationController
 
 
   def standings(team, g, num, teams)
-    school = School.where(id: team).first.nickname
+    school = Team.where(id: team).first.name
     if teams.any? {|t| t[:school] == school}
       update_team = teams.select {|t| t[:school] == school }
       ut = update_team.first

@@ -41,9 +41,9 @@
 
             </td>
             <td><%= Division.where(id: g.division).first.name %></td>
-            <td><%= School.where(id: g.opp1).first.nickname %></td>
+            <td><%= Team.where(id: g.opp1).first.name %></td>
             <td><%= g.score_opp1 %></td>
-            <td><%= School.where(id: g.opp2).first.nickname %></td>
+            <td><%= Team.where(id: g.opp2).first.name %></td>
             <td><%= g.score_opp2 %></td>
             <td><%= g.confrence ? "Y" : "N" %></td>
           </tr>
