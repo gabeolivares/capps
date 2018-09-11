@@ -1,0 +1,41 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1 style="text-align:center; font-family: 'Michroma', sans-serif;">Games for <%= @school %></h1>
+    <% unless @division_name.blank? %>
+      <h2>Division: <%= @division_name %> </h2>
+    <% end %>
+    <% unless @division_grade.blank? %>
+      <h2>Grade: <%= @division_grade %></h2>
+    <% end %>
+      <hr class="my-4">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-light">
+            <th scope="col">Date</th>
+            <th scope="col">Location</th>
+            <th scope="col">Time</th>
+            <th scope="col">Team 1</th>
+            <th scope="col">Team 1 Score</th>
+            <th scope="col">Team 2</th>
+            <th scope="col">Team 2 Score</th>
+            <th scope="col">Conf</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |g| %>
+          <tr class="table-light">
+            <td><%= g.time.strftime("%B %d, %Y") %></td>
+            <td><%= Location.where(id: g.location).first.name %></td>
+            <td><%= g.time.strftime("%I:%M %p") %></td>
+            <td><%= Team.where(id: g.opp1).first.name %></td>
+            <td><%= g.score_opp1 %></td>
+            <td><%= Team.where(id: g.opp2).first.name %></td>
+            <td><%= g.score_opp2 %></td>
+            <td><%= g.confrence ? "Y" : "N" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Back', {:action => 'show', id: params['sport_id'], division_name: params['division_name'], division_grade: params['division_grade']} , class:"btn btn-danger btn-lg btn-block" %>
+  </div>
+</div>

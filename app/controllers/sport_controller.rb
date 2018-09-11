@@ -75,7 +75,7 @@ class SportController < ApplicationController
     @division_grade = "5th & 6th Grade" if params[:division_grade] == "1"
     @division_grade = "7th & 8th Grade" if params[:division_grade] == "2"
     @division_grade_id = params[:division_grade]
-    @division_id = Division.find_by(name: @division_name, grade: params[:division_grade])
+    @division_id = Division.find_by(name: @division_name, grade: @division_grade_id)
 
     @games = Game.where(division: @division_id, sport: params[:id]).order(:time)
     @sport = Sport.find(params[:id])
@@ -161,7 +161,7 @@ class SportController < ApplicationController
         end
       end
 
-      team = {school: school, wins: wins, losses: losses, ties: ties}
+      team = {team: team, school: school, wins: wins, losses: losses, ties: ties}
 
       @teams.push(team)
     end
@@ -169,6 +169,19 @@ class SportController < ApplicationController
 
   def sport_param
       params.require(:sport).permit(:name, :nickname, :address, :mascot, :website)
+   end
+
+   def school
+     @division_grade = "5th & 6th Grade" if params[:division_grade] == "1"
+     @division_grade = "7th & 8th Grade" if params[:division_grade] == "2"
+     @division_name = params[:division_name]
+     @division_grade_id = params[:division_grade]
+     @division_id = Division.find_by(name: @division_name, grade: @division_grade_id)
+     p "hereee"
+     p @division_id
+     @school = School.find(params[:school_id]).name
+     @games = Game.where("(opp1 = ? or opp2 = ?) and (division = ? and sport = ?)",
+                   params[:school_id], params[:school_id], @division_id, params[:sport_id]).order(:time)
    end
 
    def delete

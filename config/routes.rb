@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   post 'game/create'
   get 'game/delete', to: 'sport#delete'
   get 'sport/edit'
+  get 'sport/school'
 
   #Rules
     get 'sport_rules/index'

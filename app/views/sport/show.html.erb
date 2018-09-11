@@ -44,7 +44,7 @@
             <% sorted_team = @teams.sort_by{|k| -k[:percentage] } %>
             <% sorted_team.each do |t| %>
                 <tr class="table-light">
-                  <td><%= t[:school] %></td>
+                  <td><%= link_to t[:school], {:action => "school", :school_id => t[:team], :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}%></td>
                   <td><%= t[:wins] %></td>
                   <td><%= t[:losses] %></td>
                   <td><%= t[:ties] %></td>
