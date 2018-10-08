@@ -58,6 +58,20 @@ Rails.application.routes.draw do
   get 'game/delete', to: 'sport#delete'
   get 'sport/edit'
   get 'sport/school'
+  #All tournaments
+  get 'tournaments/index'
+  get 'tournaments', to: 'tournaments#index'
+  get 'tournaments/list'
+  get 'tournaments/show'
+  get 'tournaments/show_tournament'
+  get 'tournaments/new'
+  post 'tournaments/create'
+  get 'tournaments/edit'
+  get 'tournaments/edit_tournament'
+  get 'tournaments/delete'
+  get 'tournaments/update'
+  patch 'tournaments/update_tournament_game'
+  patch 'tournaments/update_tournament'
 
   #Rules
     get 'sport_rules/index'

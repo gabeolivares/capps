@@ -1,0 +1,32 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1><%= @sport.name %></h1>
+    <hr class="my-4">
+    <%= image_tag(@sport.id, size: "100x100", style:"text-align:center") %>
+    <% if @tournament.blank? %>
+  </br>
+      <h5>There are not any tournaments currently scheduled.</h5>
+    <% else %>
+    </br>
+    </br>
+    </br>
+    <h2> Tournaments </h2>
+    <hr class="my-4">
+      <% @tournament.each do |t| %>
+        <% if user_signed_in? %>
+          <h3><%= link_to t.name, {:action => "show_tournament", :id => t.id,  :sport_id => @sport.id} %><h3>
+          </br>
+        <% end %>
+        <% if !user_signed_in? && t.visible == true %>
+          <h3><%= link_to t.name, {:action => "show_tournament", :id => t.id,  :sport_id => @sport.id} %><h3>
+          </br>
+        <% end %>
+      <% end %>
+    <% end %>
+  </br>
+      <%= link_to "Add New Tournaments", {:action => 'new', :sport_id => @sport.id}, class:"btn btn-primary btn-lg"%>
+    </br>
+    </br>
+        <%= link_to "Back", tournaments_index_path, class:"btn btn-danger btn-lg btn-block" %>
+  </div>
+  </div>

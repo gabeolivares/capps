@@ -1,0 +1,45 @@
+<div id="create-new-school">
+  <h1>Create New Tournament</h1>
+
+  <%= form_tag :action => 'create' do %>
+    <div class="field" style="text-align: left;">
+      <label for = "title">Tournament Title</label>:
+    </br>
+      <%= text_field(:tournament, :name, size: 40, class: "custom-select", required: true) %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "desc">Tournament Description</label>:
+      <%= text_field(:tournament, :desc, size: 40, class: "custom-select", required: true) %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "game_location">Bracket Type</label>:
+    </br>
+      <%= select(:tournament, :bracket_type, options_for_select([['4 teams bracket','1'],
+                                                                 ['5 teams bracket','2'],
+                                                                 ['6 teams, no consolation','3'],
+                                                                 ['6 teams consolation bracket','4'],
+                                                                 ['7 teams, no consolation','5'],
+                                                                 ['7 teams consolation bracket','6'],
+                                                                 ['8 teams, no consolation','7'],
+                                                                 ['8 teams, consolation bracket','8']]), {prompt: "Select Bracket", class: "custom-select", required: true }) %>
+    </div>
+  </br>
+    <div class="field" style="text-align: left;">
+      <label for = "message_home">Visible </label>:
+    </br>
+      <%= label :home, "Yes", value: true %>
+      <%= radio_button 'tournament', 'visible', true, :checked => true, :value => true %>
+    </br>
+      <%= label :home, "No", value: false %>
+      <%= radio_button 'tournament', 'visible', false, :value => false %>
+    </div></br>
+    <%= hidden_field_tag "sport_id", params['sport_id'] %>
+  </br>
+  <% flash.each do |key, value| %>
+    <div class="alert-message"><%= value %></div>
+  <% end %>
+  <%= submit_tag "Create", class:"btn btn-primary btn-lg btn-block"%>
+  <% end -%>
+</br>
+  <%= link_to 'Back', {:action => 'show', id: params['sport_id'], division_name: params['division_name'], division_grade: params['division_grade']} , class:"btn btn-danger btn-lg btn-block" %>
+</div>

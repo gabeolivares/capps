@@ -29,8 +29,8 @@
       <li class="nav-item <%= 'active' if current_page?(all_sports_index_path) %>">
           <%= link_to "All Games by Sports", all_sports_index_path, class:"nav-link" %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Tournaments</a>
+      <li class="nav-item <%= 'active' if current_page?(tournaments_index_path) %>">
+          <%= link_to "Tournaments", tournaments_index_path, class:"nav-link" %>
       </li>
       <% if user_signed_in? %>
       <li class="nav-item <%= 'active' if current_page?(school_index_url) %>">

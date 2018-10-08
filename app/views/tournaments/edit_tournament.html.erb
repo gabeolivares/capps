@@ -1,0 +1,30 @@
+<div id="create-new-school">
+  <h1>Edit Tournament</h1>
+  <%= form_for @tournament, :url =>{:action => "update_tournament", :id =>@tournament} do |f| %>
+    <div class="field" style="text-align: left;">
+      <label for = "name">Opponent 1</label>:
+      <%= f.text_field 'name',required: true, class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "opponent1">Description</label>:
+      <%= f.text_field 'desc',required: true, class:"form-control form-control-lg" %>
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "message_home">Visible</label>:
+    </br>
+      <%= label :visible, "Yes", value: true %>
+      <%= f.radio_button 'visible', true,:checked => @tournament.visible, :value => true %>
+    </br>
+      <%= label :visible, "No", value: false %>
+      <%= f.radio_button 'visible', false, :value => false %>
+    </div></br>
+    <%= hidden_field_tag "sport_id", params['sport_id'] %>
+  </br>
+  <% flash.each do |key, value| %>
+    <div class="alert-message"><%= value %></div>
+  <% end %>
+  <%= submit_tag "Update Tournament", class:"btn btn-primary btn-lg btn-block"%>
+  <% end -%>
+</br>
+  <%= link_to 'Back', {:action => 'show_tournament', id: params['id'], sport_id: params['sport_id']} , class:"btn btn-danger btn-lg btn-block" %>
+</div>

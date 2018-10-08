@@ -1,0 +1,898 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1><%= @tournament.name %></h1>
+    <h4><%= @tournament.desc %></h4>
+    <hr class="my-4">
+    <% if user_signed_in? %>
+      <%= link_to 'Edit Tournament', {:action => "edit_tournament", :id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+    <% end %>
+  </br>
+  </br>
+  </br>
+    <% case @tournament.bracket_type %>
+		<% when 1 %>
+    <!-- NOTES: CLASSES FOR BRACKET TEAM LOSER(class="bracket-team loser">) AND WINNERS(class="bracket-team winner">) -->
+      <div class="bracket-container">
+        <div class="bracket-level">
+          </br></br></br></br></br>
+          </br>
+          <h4>Game #3</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name">  <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name">  <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+          <h4>Game #1</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name">#1  <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil?%></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name">#4 <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          <br>
+          <h4>Game #2</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name">#2 <%= Team.where(id: @game_2.opp1).first.name  if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name">#3 <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+        </br></br></br></br></br>
+        </br>
+        <h4>Game #4</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 > @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil?  %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          </div>
+        </div>
+    </br>
+      <% when 2 %>
+      <div class="bracket-container">
+        <div class="bracket-level">
+          <h4>Game #1</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name">#4  <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name">#5 <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+          <h4>Game #2</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name">#1  <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          <br>
+          <h4>Game #3</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name">#2 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name">#3 <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+        </br></br></br></br></br>
+        </br>
+        <h4>Game #4</h4>
+        <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
+            <div class="bracket-name"><%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+            <div class="bracket-name"><%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil? %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </br>
+      <% when 3 %>
+      <div class="bracket-container">
+        <div class="bracket-level">
+          <h4>Game #1</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name">#4 <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name">#5 <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          <br>
+          <h4>Game #2</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name">#3 <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name">#6 <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+          <h4>Game #3</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name">#1 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          <br>
+          <h4>Game #4</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
+              <div class="bracket-name">#2 <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil? %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+        </br></br></br></br></br>
+        </br>
+        <h4>Game #5</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
+              </div>
+              <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? && @game_5.score_opp1 < @game_5.score_opp2 %>">
+                <div class="bracket-name"> <%= Team.where(id: @game_5.opp2).first.name if !@game_5.opp2.nil? %></div><div class="bracket-score"><%= @game_5.score_opp2.nil? ? "--" : @game_5.score_opp2 %></div>
+              </div>
+              <% if user_signed_in? %>
+                <%= link_to 'Edit Game', {:action => "edit", :id => @game_5.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+              <% end %>
+          </div>
+          <br>
+        </div>
+      </div>
+    </br>
+      <% when 4 %>
+      <div class="bracket-container">
+        <div class="bracket-level">
+          <h4>Game #1</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          <br>
+          <h4>Game #2</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+          <h4>Game #3</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          <br>
+          <h4>Game #4</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil? %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="bracket-level">
+        </br></br></br></br></br>
+        </br>
+        <h4>Game #5</h4>
+          <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? && @game_5.score_opp1 < @game_5.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_5.opp2).first.name if !@game_5.opp2.nil? %></div><div class="bracket-score"><%= @game_5.score_opp2.nil? ? "--" : @game_5.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_5.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+          <br>
+        </div>
+      </div>
+    </br>
+    </br>
+    </br>
+  <h2> Consultation Bracket</h2>
+      <div class="bracket-container">
+      <div class="bracket-level">
+        <h4>Game #6</h4>
+        <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? && @game_6.score_opp1 < @game_6.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_6.opp2).first.name if !@game_6.opp2.nil? %></div><div class="bracket-score"><%= @game_6.score_opp2.nil? ? "--" : @game_6.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_6.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+        <h4>Game #7</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? && @game_7.score_opp1 < @game_7.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_7.opp2).first.name if !@game_7.opp2.nil? %></div><div class="bracket-score"><%= @game_7.score_opp2.nil? ? "--" : @game_7.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_7.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </div>
+      <div class="bracket-level">
+      </br></br></br></br></br>
+      </br>
+      <h4>Game #8</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? &&  @game_8.score_opp1 > @game_8.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_8.opp1).first.name if !@game_8.opp1.nil? %></div><div class="bracket-score"><%= @game_8.score_opp1.nil? ? "--" : @game_8.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? && @game_8.score_opp1 < @game_8.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_8.opp2).first.name if !@game_8.opp2.nil? %></div><div class="bracket-score"><%= @game_8.score_opp2.nil? ? "--" : @game_8.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_8.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+    </div>
+  </br>
+    <% when 5 %>
+    <div class="bracket-container">
+      <div class="bracket-level">
+        <h4>Game #1</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #2</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #3</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </div>
+      <div class="bracket-level">
+        <h4>Game #4</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil? %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+    </br></br></br></br></br>
+    </br>
+      <h4>Game #5</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? && @game_5.score_opp1 < @game_5.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_5.opp2).first.name if !@game_5.opp2.nil? %></div><div class="bracket-score"><%= @game_5.score_opp2.nil? ? "--" : @game_5.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_5.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+      <div class="bracket-level">
+      </br>
+    </br></br></br></br></br>
+    </br>
+        <h4>Game #6</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? && @game_6.score_opp1 < @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp2).first.name if !@game_6.opp2.nil? %></div><div class="bracket-score"><%= @game_6.score_opp2.nil? ? "--" : @game_6.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_6.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+      </div>
+    </div>
+  </br>
+    <% when 6 %>
+    <div class="bracket-container">
+      <div class="bracket-level">
+        <h4>Game #1</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #2</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #3</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </div>
+      <div class="bracket-level">
+        <h4>Game #4</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil? %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+    </br></br></br></br></br>
+    </br>
+      <h4>Game #5</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? && @game_5.score_opp1 < @game_5.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_5.opp2).first.name if !@game_5.opp2.nil? %></div><div class="bracket-score"><%= @game_5.score_opp2.nil? ? "--" : @game_5.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_5.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+      <div class="bracket-level">
+      </br>
+    </br></br></br></br></br>
+    </br>
+      <h4>Game #10</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_10.score_opp1.nil? && !@game_10.score_opp2.nil? &&  @game_10.score_opp1 > @game_10.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_10.opp1).first.name if !@game_10.opp1.nil? %></div><div class="bracket-score"><%= @game_10.score_opp1.nil? ? "--" : @game_10.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_10.score_opp1.nil? && !@game_10.score_opp2.nil? && @game_10.score_opp1 < @game_10.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_10.opp2).first.name if !@game_10.opp2.nil? %></div><div class="bracket-score"><%= @game_10.score_opp2.nil? ? "--" : @game_10.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_10.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+    </div>
+  </br>
+  </br>
+  </br>
+  <h2> Consultation Bracket</h2>
+    <div class="bracket-container">
+      <div class="bracket-level">
+      </br></br></br></br></br>
+      </br>
+        <h4>Game #6</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? && @game_6.score_opp1 < @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp2).first.name if !@game_6.opp2.nil? %></div><div class="bracket-score"><%= @game_6.score_opp2.nil? ? "--" : @game_6.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_6.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </div>
+      <div class="bracket-level">
+        <h4>Game #8</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? &&  @game_8.score_opp1 > @game_8.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_8.opp1).first.name if !@game_8.opp1.nil? %></div><div class="bracket-score"><%= @game_8.score_opp1.nil? ? "--" : @game_8.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? && @game_8.score_opp1 < @game_8.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_8.opp2).first.name if !@game_8.opp2.nil? %></div><div class="bracket-score"><%= @game_8.score_opp2.nil? ? "--" : @game_8.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_8.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+        <h4>Game #7</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? && @game_7.score_opp1 < @game_7.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_7.opp2).first.name if !@game_7.opp2.nil? %></div><div class="bracket-score"><%= @game_7.score_opp2.nil? ? "--" : @game_7.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_7.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+      </div>
+      <div class="bracket-level">
+      </br></br></br></br></br>
+      </br>
+      <h4>Game #9</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_9.score_opp1.nil? && !@game_9.score_opp2.nil? &&  @game_9.score_opp1 > @game_9.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_9.opp1).first.name if !@game_9.opp1.nil? %></div><div class="bracket-score"><%= @game_9.score_opp1.nil? ? "--" : @game_9.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_9.score_opp1.nil? && !@game_9.score_opp2.nil? && @game_9.score_opp1 < @game_9.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_9.opp2).first.name if !@game_9.opp2.nil? %></div><div class="bracket-score"><%= @game_9.score_opp2.nil? ? "--" : @game_9.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_9.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </br>
+    <% when 7 %>
+    <div class="bracket-container">
+      <div class="bracket-level">
+        <h4>Game #1</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #2</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #3</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+      <h4>Game #4</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil? %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="bracket-level">
+      </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <h4>Game #5</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? && @game_5.score_opp1 < @game_5.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_5.opp2).first.name if !@game_5.opp2.nil? %></div><div class="bracket-score"><%= @game_5.score_opp2.nil? ? "--" : @game_5.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_5.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br></br></br></br></br></br>
+        <h4>Game #6</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? && @game_6.score_opp1 < @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp2).first.name if !@game_6.opp2.nil? %></div><div class="bracket-score"><%= @game_6.score_opp2.nil? ? "--" : @game_6.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_6.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+        </div>
+        <br>
+      </div>
+      <div class="bracket-level">
+      </br></br></br></br></br></br></br></br>
+      </br></br></br></br></br></br></br></br>
+      </br>
+      <h4>Game #7</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? && @game_7.score_opp1 < @game_7.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_7.opp2).first.name if !@game_7.opp2.nil? %></div><div class="bracket-score"><%= @game_7.score_opp2.nil? ? "--" : @game_7.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_7.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+    </div>
+    </br>
+    <% when 8 %>
+    <div class="bracket-container">
+      <div class="bracket-level">
+        <h4>Game #1</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? && @game_1.score_opp1 < @game_1.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_1.opp2).first.name if !@game_1.opp2.nil? %></div><div class="bracket-score"><%= @game_1.score_opp2.nil? ? "--" : @game_1.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_1.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #2</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 < @game_2.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_2.opp2).first.name if !@game_2.opp2.nil? %></div><div class="bracket-score"><%= @game_2.score_opp2.nil? ? "--" : @game_2.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_2.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        <br>
+        <h4>Game #3</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 < @game_3.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_3.opp2).first.name if !@game_3.opp2.nil? %></div><div class="bracket-score"><%= @game_3.score_opp2.nil? ? "--" : @game_3.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_3.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+      <h4>Game #4</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 < @game_4.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_4.opp2).first.name if !@game_4.opp2.nil? %></div><div class="bracket-score"><%= @game_4.score_opp2.nil? ? "--" : @game_4.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_4.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="bracket-level">
+      </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <h4>Game #5</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? && @game_5.score_opp1 < @game_5.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_5.opp2).first.name if !@game_5.opp2.nil? %></div><div class="bracket-score"><%= @game_5.score_opp2.nil? ? "--" : @game_5.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_5.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br></br></br></br></br></br>
+        <h4>Game #6</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? && @game_6.score_opp1 < @game_6.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_6.opp2).first.name if !@game_6.opp2.nil? %></div><div class="bracket-score"><%= @game_6.score_opp2.nil? ? "--" : @game_6.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_6.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+        </div>
+        <br>
+      </div>
+      <div class="bracket-level">
+      </br></br></br></br></br></br></br></br>
+      </br></br></br></br></br></br></br></br>
+      </br>
+      <h4>Game #7</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? && @game_7.score_opp1 < @game_7.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_7.opp2).first.name if !@game_7.opp2.nil? %></div><div class="bracket-score"><%= @game_7.score_opp2.nil? ? "--" : @game_7.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_7.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+    </div>
+  </br>
+  </br>
+  </br>
+  <h2> Consultation Bracket</h2>
+    <div class="bracket-container">
+      <div class="bracket-level">
+        <h4>Game #8</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? &&  @game_8.score_opp1 > @game_8.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_8.opp1).first.name if !@game_8.opp1.nil? %></div><div class="bracket-score"><%= @game_8.score_opp1.nil? ? "--" : @game_8.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? && @game_8.score_opp1 < @game_8.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_8.opp2).first.name if !@game_8.opp2.nil? %></div><div class="bracket-score"><%= @game_8.score_opp2.nil? ? "--" : @game_8.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_8.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+      <h4>Game #9</h4>
+        <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_9.score_opp1.nil? && !@game_9.score_opp2.nil? &&  @game_9.score_opp1 > @game_9.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_9.opp1).first.name if !@game_9.opp1.nil? %></div><div class="bracket-score"><%= @game_9.score_opp1.nil? ? "--" : @game_9.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_9.score_opp1.nil? && !@game_9.score_opp2.nil? && @game_9.score_opp1 < @game_9.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_9.opp2).first.name if !@game_9.opp2.nil? %></div><div class="bracket-score"><%= @game_9.score_opp2.nil? ? "--" : @game_9.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_9.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+      <div class="bracket-level">
+        <h4>Game #10</h4>
+        <div class="bracket-matchup">
+            <div class="bracket-team <%= 'winner' if !@game_10.score_opp1.nil? && !@game_10.score_opp2.nil? &&  @game_10.score_opp1 > @game_10.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_10.opp1).first.name if !@game_10.opp1.nil? %></div><div class="bracket-score"><%= @game_10.score_opp1.nil? ? "--" : @game_10.score_opp1 %></div>
+            </div>
+            <div class="bracket-team <%= 'winner' if !@game_10.score_opp1.nil? && !@game_10.score_opp2.nil? && @game_10.score_opp1 < @game_10.score_opp2 %>">
+              <div class="bracket-name"> <%= Team.where(id: @game_10.opp2).first.name if !@game_10.opp2.nil? %></div><div class="bracket-score"><%= @game_10.score_opp2.nil? ? "--" : @game_10.score_opp2 %></div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit Game', {:action => "edit", :id => @game_10.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+      </br>
+      <h4>Game #11</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_11.score_opp1.nil? && !@game_11.score_opp2.nil? &&  @game_11.score_opp1 > @game_11.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_11.opp1).first.name if !@game_11.opp1.nil? %></div><div class="bracket-score"><%= @game_11.score_opp1.nil? ? "--" : @game_11.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_11.score_opp1.nil? && !@game_11.score_opp2.nil? && @game_11.score_opp1 < @game_11.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_11.opp2).first.name if !@game_11.opp2.nil? %></div><div class="bracket-score"><%= @game_11.score_opp2.nil? ? "--" : @game_11.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_11.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+        <br>
+      </div>
+      <div class="bracket-level">
+      </br></br></br></br></br>
+      </br>
+      <h4>Game #12</h4>
+      <div class="bracket-matchup">
+          <div class="bracket-team <%= 'winner' if !@game_12.score_opp1.nil? && !@game_12.score_opp2.nil? &&  @game_12.score_opp1 > @game_12.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_12.opp1).first.name if !@game_12.opp1.nil? %></div><div class="bracket-score"><%= @game_12.score_opp1.nil? ? "--" : @game_12.score_opp1 %></div>
+          </div>
+          <div class="bracket-team <%= 'winner' if !@game_12.score_opp1.nil? && !@game_12.score_opp2.nil? && @game_12.score_opp1 < @game_12.score_opp2 %>">
+            <div class="bracket-name"> <%= Team.where(id: @game_12.opp2).first.name if !@game_12.opp2.nil? %></div><div class="bracket-score"><%= @game_12.score_opp2.nil? ? "--" : @game_12.score_opp2 %></div>
+          </div>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Game', {:action => "edit", :id => @game_12.id, :tournament_id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    </div>
+      <%= link_to 'Back', {:action => 'show', id: params['sport_id']} , class:"btn btn-danger btn-lg btn-block" %>
+  </div>
