@@ -277,6 +277,14 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def delete
+    sport_id = params['sport_id']
+    tournament_id = params['id']
+    Tournament.find(tournament_id).destroy
+
+    redirect_to :action => 'show', :id => sport_id
+  end
+
   def edit_tournament
     @tournament = Tournament.find_by(id:params[:id])
   end

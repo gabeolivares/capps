@@ -5,6 +5,7 @@
     <hr class="my-4">
     <% if user_signed_in? %>
       <%= link_to 'Edit Tournament', {:action => "edit_tournament", :id => @tournament.id, :sport_id => params['sport_id']}, class:"btn btn-primary btn-lg" %>
+      <%= link_to 'Delete Tournament', {:action => "delete", :id => @tournament.id, :sport_id => params['sport_id']} , class:"btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this tournament?"}  %>
     <% end %>
   </br>
   </br>

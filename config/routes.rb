@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   get 'tournaments/update'
   patch 'tournaments/update_tournament_game'
   patch 'tournaments/update_tournament'
+  get 'tournaments/delete', to: 'tournaments#delete'
 
   #Rules
     get 'sport_rules/index'
