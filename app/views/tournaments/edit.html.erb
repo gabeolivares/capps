@@ -18,6 +18,19 @@
       <label for = "message_body">Opponent 2 Score</label>:
       <%= f.number_field 'score_opp2', class:"form-control form-control-lg" %>
     </div>
+    <div class="field" style="text-align: left;">
+      <label for = "game_location">Location</label>:
+      <%= collection_select(:tournament_game, :location, Location.all.order(:name), :id, :name, {prompt: "Select a Location"}, {class: "custom-select", required: true}) %>
+
+    </div>
+    <div class="field" style="text-align: left;">
+      <label for = "message_end_date">Date</label>:
+      </br>
+      <%= datetime_select("tournament_game", "time", prompt: {
+                day: 'Select day', month: 'Select month', year: 'Select year'
+              }, start_year: Time.now.year, order: [:month, :day, :year, :hour,:minute], ampm: true, required: true, class:"form-control form-control-lg" ) %>
+      </br>
+    </div>
     </br>
   </br>
   <% flash.each do |key, value| %>

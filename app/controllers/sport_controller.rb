@@ -177,8 +177,6 @@ class SportController < ApplicationController
      @division_name = params[:division_name]
      @division_grade_id = params[:division_grade]
      @division_id = Division.find_by(name: @division_name, grade: @division_grade_id)
-     p "hereee"
-     p @division_id
      @school = School.find(params[:school_id]).name
      @games = Game.where("(opp1 = ? or opp2 = ?) and (division = ? and sport = ?)",
                    params[:school_id], params[:school_id], @division_id, params[:sport_id]).order(:time)

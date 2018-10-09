@@ -24,7 +24,9 @@
       <% end %>
     <% end %>
   </br>
+    <% if user_signed_in? %>
       <%= link_to "Add New Tournaments", {:action => 'new', :sport_id => @sport.id}, class:"btn btn-primary btn-lg"%>
+    <% end %>
     </br>
     </br>
         <%= link_to "Back", tournaments_index_path, class:"btn btn-danger btn-lg btn-block" %>

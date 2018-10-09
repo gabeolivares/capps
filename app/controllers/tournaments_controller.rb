@@ -295,10 +295,15 @@ class TournamentsController < ApplicationController
 
   def update_tournament_game
     @tournament_game = TournamentGame.find_by(id:params[:id])
-    if @tournament_game.update_attributes(tour_game_param)
-       redirect_to :action => 'show_tournament', :id => params['tournament_id'], :sport_id => params['sport_id']
+    unless (params['tournament_game']['time(1i)'] == "" || params['tournament_game']['time(2i)'] == "" || params['tournament_game']['time(3i)'] == "")
+      if @tournament_game.update_attributes(tour_game_param)
+         redirect_to :action => 'show_tournament', :id => params['tournament_id'], :sport_id => params['sport_id']
+      else
+         render :action => 'edit', :id => params['tournament_id'], :sport_id => params['sport_id']
+      end
     else
-       render :action => 'edit', :id => params['tournament_id'], :sport_id => params['sport_id']
+      flash[:error] = "We were unable to update the game. Please make sure all fields are filled."
+      redirect_to :back
     end
   end
   def update_tournament
@@ -311,7 +316,7 @@ class TournamentsController < ApplicationController
   end
 
   def tour_game_param
-    params.require(:tournament_game).permit(:opp1, :score_opp1, :opp2, :score_opp2)
+    params.require(:tournament_game).permit(:opp1, :score_opp1, :opp2, :score_opp2, :location, :time)
   end
   def tour_param
       params.require(:tournament).permit(:name, :desc, :bracket_type, :time, :visible)
