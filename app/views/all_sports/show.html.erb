@@ -32,7 +32,7 @@
         <tbody>
           <% @game.each do |g| %>
           <tr class="table-light">
-            <td><%= g.time.strftime("%B %d, %Y") %></td>
+            <td><%= g.time.strftime("%a %B %d, %Y") %></td>
             <td><%= Location.where(id: g.location).first.name %></td>
             <td><%= g.time.strftime("%I:%M %p") %></td>
             <td>
