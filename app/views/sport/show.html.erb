@@ -81,7 +81,7 @@
         <tbody>
           <% @games.each do |g| %>
           <tr class="table-light">
-            <td><%= g.time.strftime("%B %d, %Y") %></td>
+            <td><%= g.time.strftime("%a %B %d, %Y") %></td>
             <td><%= Location.where(id: g.location).first.name %></td>
             <td><%= g.time.strftime("%I:%M %p") %></td>
             <td><%= Team.where(id: g.opp1).first.name %></td>
