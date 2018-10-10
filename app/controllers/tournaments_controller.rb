@@ -4,7 +4,7 @@ class TournamentsController < ApplicationController
   end
   def show
     @sport = Sport.find(params[:id])
-    @tournament = Tournament.where(sports_id:params[:id])
+    @tournament = Tournament.where(sports_id:params[:id]).order(:name)
   end
   def new
   end
