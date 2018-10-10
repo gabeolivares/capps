@@ -238,7 +238,7 @@ class TournamentsController < ApplicationController
     when '8'
       if @tournament.save
         game_num = 1
-        12.times do
+        11.times do
           tournament_game = {}
           tournament_game[:game_num] = game_num
           tournament_game[:tournament_id] = @tournament.id
@@ -297,6 +297,10 @@ class TournamentsController < ApplicationController
     @tournament_game = TournamentGame.find_by(id:params[:id])
     unless (params['tournament_game']['time(1i)'] == "" || params['tournament_game']['time(2i)'] == "" || params['tournament_game']['time(3i)'] == "")
       if @tournament_game.update_attributes(tour_game_param)
+        # case params[:bracket_type]
+        # when '1'
+        #
+        # end
          redirect_to :action => 'show_tournament', :id => params['tournament_id'], :sport_id => params['sport_id']
       else
          render :action => 'edit', :id => params['tournament_id'], :sport_id => params['sport_id']
