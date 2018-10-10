@@ -295,7 +295,6 @@ class TournamentsController < ApplicationController
 
   def update_tournament_game
     @tournament_game = TournamentGame.find_by(id:params[:id])
-    unless (params['tournament_game']['time(1i)'] == "" || params['tournament_game']['time(2i)'] == "" || params['tournament_game']['time(3i)'] == "")
       if @tournament_game.update_attributes(tour_game_param)
         # case params[:bracket_type]
         # when '1'
@@ -305,10 +304,6 @@ class TournamentsController < ApplicationController
       else
          render :action => 'edit', :id => params['tournament_id'], :sport_id => params['sport_id']
       end
-    else
-      flash[:error] = "We were unable to update the game. Please make sure all fields are filled."
-      redirect_to :back
-    end
   end
   def update_tournament
     @tournament = Tournament.find_by(id:params[:id])
