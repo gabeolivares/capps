@@ -317,7 +317,7 @@ class TournamentsController < ApplicationController
       if @tournament_game.update_attributes(tour_game_param)
         case params[:bracket_type]
         when '0'
-          if @tournament_game.game_num == 1
+          if @tournament_game.game_num == 1 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
             if @tournament_game.score_opp1 > @tournament_game.score_opp2
               @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
               @update_winner.update(opp1: @tournament_game.opp1)
@@ -327,7 +327,7 @@ class TournamentsController < ApplicationController
               @update_winner.update(opp1: @tournament_game.opp2)
             end
           end
-          if @tournament_game.game_num == 2
+          if @tournament_game.game_num == 2 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
             if @tournament_game.score_opp1 > @tournament_game.score_opp2
               @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
               @update_winner.update(opp2: @tournament_game.opp1)
@@ -338,7 +338,7 @@ class TournamentsController < ApplicationController
             end
           end
         when '1'
-          if @tournament_game.game_num == 1
+          if @tournament_game.game_num == 1 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
             if @tournament_game.score_opp1 > @tournament_game.score_opp2
               @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
               @update_winner.update(opp1: @tournament_game.opp1)
@@ -352,7 +352,7 @@ class TournamentsController < ApplicationController
               @update_loser.update(opp1: @tournament_game.opp1)
             end
           end
-          if @tournament_game.game_num == 2
+          if @tournament_game.game_num == 2 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
             if @tournament_game.score_opp1 > @tournament_game.score_opp2
               @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
               @update_winner.update(opp2: @tournament_game.opp1)
