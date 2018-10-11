@@ -14,7 +14,8 @@
     <div class="field" style="text-align: left;">
       <label for = "game_location">Bracket Type</label>:
     </br>
-      <%= select(:tournament, :bracket_type, options_for_select([['4 teams bracket','1'],
+      <%= select(:tournament, :bracket_type, options_for_select([['4 teams, no consolation','0'],
+                                                                 ['4 teams consolation bracket','1'],
                                                                  ['5 teams bracket','2'],
                                                                  ['6 teams, no consolation','3'],
                                                                  ['6 teams consolation bracket','4'],

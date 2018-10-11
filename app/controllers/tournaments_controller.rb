@@ -36,7 +36,26 @@ class TournamentsController < ApplicationController
       @tournament = Tournament.new(tournament)
 
       case params['tournament']['bracket_type']
+      #4 teams no con
+      when '0'
+        if @tournament.save
+          game_num = 1
+          3.times do
+            tournament_game = {}
+            tournament_game[:game_num] = game_num
+            tournament_game[:tournament_id] = @tournament.id
 
+            @tournament_game = TournamentGame.new(tournament_game)
+            game_num += 1
+            @tournament_game.save
+          end
+
+          redirect_to :action => 'show', :id => sport_id
+       else
+          @tournament = Tournament.all
+          flash[:error] = "Error creating tournament"
+          render :action => 'show', :id => sport_id
+       end
       #4 teams bracket
       when '1'
         if @tournament.save
@@ -296,10 +315,58 @@ class TournamentsController < ApplicationController
   def update_tournament_game
     @tournament_game = TournamentGame.find_by(id:params[:id])
       if @tournament_game.update_attributes(tour_game_param)
-        # case params[:bracket_type]
-        # when '1'
-        #
-        # end
+        case params[:bracket_type]
+        when '0'
+          if @tournament_game.game_num == 1
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 2
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+        when '1'
+          if @tournament_game.game_num == 1
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp1: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp1: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 2
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+        end
          redirect_to :action => 'show_tournament', :id => params['tournament_id'], :sport_id => params['sport_id']
       else
          render :action => 'edit', :id => params['tournament_id'], :sport_id => params['sport_id']

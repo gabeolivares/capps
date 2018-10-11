@@ -23,6 +23,8 @@
       <%= collection_select(:tournament_game, :location, Location.all.order(:name), :id, :name, {prompt: "Select a Location"}, {class: "custom-select"}) %>
 
     </div>
+    <%= hidden_field_tag "bracket_type", params['bracket_type'] %>
+    <%= hidden_field_tag "tournament_id", params['tournament_id'] %>
     <div class="field" style="text-align: left;">
       <label for = "message_end_date">Date</label>:
       </br>
@@ -39,5 +41,5 @@
   <%= submit_tag "Update Game", class:"btn btn-primary btn-lg btn-block"%>
   <% end -%>
 </br>
-  <%= link_to 'Back', {:action => 'show_tournament', id: params['tournament_id'], sport_id: params['sport_id']} , class:"btn btn-danger btn-lg btn-block" %>
+  <%= link_to 'Back', {:action => 'show_tournament', id: params['tournament_id'], sport_id: params['sport_id']}, class:"btn btn-danger btn-lg btn-block" %>
 </div>
