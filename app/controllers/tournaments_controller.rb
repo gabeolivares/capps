@@ -438,6 +438,401 @@ class TournamentsController < ApplicationController
               @update_winner.update(opp2: @tournament_game.opp2)
             end
           end
+        when '4'
+          if @tournament_game.game_num == 1 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '3')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 2 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 3 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 4 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 6 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 7 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+        when '5'
+          if @tournament_game.game_num == 1 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 2 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 3 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 4 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 5 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+        when '6'
+          if @tournament_game.game_num == 1 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '4')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 2 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 3 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 4 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp1: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp1: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 5 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 6 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 7 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 8 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+        when '7'
+          if @tournament_game.game_num == 1 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 2 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 3 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 4 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 5 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 6 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
+        when '8'
+          if @tournament_game.game_num == 1 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp1: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 2 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '5')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '8')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 3 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp1: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp1: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 4 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '6')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '9')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 5 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp1: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '11')
+              @update_loser.update(opp1: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp1: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '11')
+              @update_loser.update(opp1: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 6 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp2: @tournament_game.opp1)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '11')
+              @update_loser.update(opp2: @tournament_game.opp2)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '7')
+              @update_winner.update(opp2: @tournament_game.opp2)
+              @update_loser = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '11')
+              @update_loser.update(opp2: @tournament_game.opp1)
+            end
+          end
+          if @tournament_game.game_num == 8 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp1: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp1: @tournament_game.opp2)
+            end
+          end
+          if @tournament_game.game_num == 9 && !@tournament_game.score_opp1.nil? && !@tournament_game.score_opp2.nil?
+            if @tournament_game.score_opp1 > @tournament_game.score_opp2
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp2: @tournament_game.opp1)
+            end
+            if @tournament_game.score_opp2 > @tournament_game.score_opp1
+              @update_winner = TournamentGame.find_by(tournament_id: params[:tournament_id], game_num: '10')
+              @update_winner.update(opp2: @tournament_game.opp2)
+            end
+          end
         end
          redirect_to :action => 'show_tournament', :id => params['tournament_id'], :sport_id => params['sport_id']
       else
