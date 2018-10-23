@@ -3,107 +3,113 @@
     <h1><%= @sport.name %></h1>
     <hr class="my-4">
     <%= image_tag(@sport.id, size: "100x100", style:"text-align:center") %>
-    <h4 style="text-align:left;"> 5th/6th Grade:</h4>
-    <ul class="pagination">
-      <% @divisions_one.each do |d| %>
-      <li class="page-item">
-        <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
-      </li>
-      <% end %>
-    </ul>
-  </br>
-  <h4 style="text-align:left;"> 7th/8th Grade:</h4>
-    <ul class="pagination">
-      <% @divisions_two.each do |d| %>
-      <li class="page-item">
-        <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
-      </li>
-      <% end %>
-    </ul>
-    <% unless @division_name.blank? %>
-      <h1>Division: <%= @division_name %> </h1>
-    <% end %>
-    <% unless @division_grade.blank? %>
-      <h1>Grade: <%= @division_grade %><h1>
-    <% end %>
-    <% unless @games.blank? %>
-      <% unless @division_name.blank? && @division_grade.blank? %>
-      <br>
-        <h5 style="text-align:center; font-family: 'Michroma', sans-serif;"> <%= @division_grade %> <%= @division_name %>  Conference Standings</h5>
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-light">
-              <th scope="col">Team</th>
-              <th scope="col">Wins</th>
-              <th scope="col">Losses</th>
-              <th scope="col">Ties</th>
-              <th scope="col">Winning %</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% sorted_team = @teams.sort_by{|k| -k[:percentage] } %>
-            <% sorted_team.each do |t| %>
-                <tr class="table-light">
-                  <td><%= link_to t[:school], {:action => "school", :school_id => t[:team], :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}%></td>
-                  <td><%= t[:wins] %></td>
-                  <td><%= t[:losses] %></td>
-                  <td><%= t[:ties] %></td>
-                  <td><%= t[:percentage]%>%</td>
-                </tr>
-            <% end %>
-          </tbody>
-        </table>
-       <% end %>
-      <% end %>
-
-    <% if @games.blank? %>
-      <h5>There are not any games currently scheduled.</h5>
+    <% if @sport.id == 3 %>
+      <h2>2018 CAPPS Cross Country Championship Meet</h2>
+      <h5>Monday October 29th, 2018 @4pm</h5>
+      <%= image_tag("hancock.png", style:"text-align:center;width:70%") %>
     <% else %>
-    <br>
-    <h5 style="text-align:center; font-family: 'Michroma', sans-serif;">Games</h5>
-      <hr class="my-4">
-      <table class="table table-hover">
-        <thead>
-          <tr class="table-light">
-            <th scope="col">Date</th>
-            <th scope="col">Location</th>
-            <th scope="col">Time</th>
-            <th scope="col">Team 1</th>
-            <th scope="col">Team 1 Score</th>
-            <th scope="col">Team 2</th>
-            <th scope="col">Team 2 Score</th>
-            <th scope="col">Conf</th>
-            <% if user_signed_in? %>
-              <th scope="col">Actions</th>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody>
-          <% @games.each do |g| %>
-          <tr class="table-light">
-            <td><%= g.time.strftime("%a %B %d, %Y") %></td>
-            <td><%= Location.where(id: g.location).first.name %></td>
-            <td><%= g.time.strftime("%I:%M %p") %></td>
-            <td><%= Team.where(id: g.opp1).first.name %></td>
-            <td><%= g.score_opp1 %></td>
-            <td><%= Team.where(id: g.opp2).first.name %></td>
-            <td><%= g.score_opp2 %></td>
-            <td><%= g.confrence ? "Y" : "N" %></td>
-            <% if user_signed_in? %>
-              <td style="float:right;">
-                <%= link_to 'Edit', {:action => "edit", :game_id => g.id, :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}, class:"btn btn-primary btn-lg" %>
-                <%= link_to "Delete", {:action => 'delete', :game_id => g.id, :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}, class:"btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this game?"}  %>
-              </td>
-            <% end %>
-          </tr>
+        <h4 style="text-align:left;"> 5th/6th Grade:</h4>
+        <ul class="pagination">
+          <% @divisions_one.each do |d| %>
+          <li class="page-item">
+            <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+          </li>
           <% end %>
-        </tbody>
-      </table>
-    <% end %>
-    <% if user_signed_in? %>
-      <% unless @division_name.blank? && @division_grade.blank? %>
-        <%= link_to "Add New Game", {:action => 'new', :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}, class:"btn btn-primary btn-lg"%>
+        </ul>
+      </br>
+      <h4 style="text-align:left;"> 7th/8th Grade:</h4>
+        <ul class="pagination">
+          <% @divisions_two.each do |d| %>
+          <li class="page-item">
+            <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+          </li>
+          <% end %>
+        </ul>
+        <% unless @division_name.blank? %>
+          <h1>Division: <%= @division_name %> </h1>
+        <% end %>
+        <% unless @division_grade.blank? %>
+          <h1>Grade: <%= @division_grade %><h1>
+        <% end %>
+        <% unless @games.blank? %>
+          <% unless @division_name.blank? && @division_grade.blank? %>
+          <br>
+            <h5 style="text-align:center; font-family: 'Michroma', sans-serif;"> <%= @division_grade %> <%= @division_name %>  Conference Standings</h5>
+            <table class="table table-hover">
+              <thead>
+                <tr class="table-light">
+                  <th scope="col">Team</th>
+                  <th scope="col">Wins</th>
+                  <th scope="col">Losses</th>
+                  <th scope="col">Ties</th>
+                  <th scope="col">Winning %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% sorted_team = @teams.sort_by{|k| -k[:percentage] } %>
+                <% sorted_team.each do |t| %>
+                    <tr class="table-light">
+                      <td><%= link_to t[:school], {:action => "school", :school_id => t[:team], :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}%></td>
+                      <td><%= t[:wins] %></td>
+                      <td><%= t[:losses] %></td>
+                      <td><%= t[:ties] %></td>
+                      <td><%= t[:percentage]%>%</td>
+                    </tr>
+                <% end %>
+              </tbody>
+            </table>
+           <% end %>
+          <% end %>
+
+        <% if @games.blank? %>
+          <h5>There are not any games currently scheduled.</h5>
+        <% else %>
+        <br>
+        <h5 style="text-align:center; font-family: 'Michroma', sans-serif;">Games</h5>
+          <hr class="my-4">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th scope="col">Date</th>
+                <th scope="col">Location</th>
+                <th scope="col">Time</th>
+                <th scope="col">Team 1</th>
+                <th scope="col">Team 1 Score</th>
+                <th scope="col">Team 2</th>
+                <th scope="col">Team 2 Score</th>
+                <th scope="col">Conf</th>
+                <% if user_signed_in? %>
+                  <th scope="col">Actions</th>
+                <% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <% @games.each do |g| %>
+              <tr class="table-light">
+                <td><%= g.time.strftime("%a %B %d, %Y") %></td>
+                <td><%= Location.where(id: g.location).first.name %></td>
+                <td><%= g.time.strftime("%I:%M %p") %></td>
+                <td><%= Team.where(id: g.opp1).first.name %></td>
+                <td><%= g.score_opp1 %></td>
+                <td><%= Team.where(id: g.opp2).first.name %></td>
+                <td><%= g.score_opp2 %></td>
+                <td><%= g.confrence ? "Y" : "N" %></td>
+                <% if user_signed_in? %>
+                  <td style="float:right;">
+                    <%= link_to 'Edit', {:action => "edit", :game_id => g.id, :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}, class:"btn btn-primary btn-lg" %>
+                    <%= link_to "Delete", {:action => 'delete', :game_id => g.id, :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}, class:"btn btn-danger btn-lg", data: {confirm: "Are you sure you want to delete this game?"}  %>
+                  </td>
+                <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+        <% if user_signed_in? %>
+          <% unless @division_name.blank? && @division_grade.blank? %>
+            <%= link_to "Add New Game", {:action => 'new', :division_name => @division_name, :division_grade => @division_grade_id , :sport_id => @sport.id}, class:"btn btn-primary btn-lg"%>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
   </div>
