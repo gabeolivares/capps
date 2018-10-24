@@ -8,6 +8,24 @@
 </br>
 </br>
       <h5>There are not any tournaments currently scheduled.</h5>
+    </br>
+  </br>
+      <% unless @year.blank? %>
+        <h1>Year: <%= @year %></h1>
+      <% end %>
+      <%= form_tag( '/archives/show_tournament', :method => :get ) do %>
+      <%= hidden_field_tag "division_name", params['division_name'] %>
+      <%= hidden_field_tag "division_grade", params['division_grade'] %>
+      <%= hidden_field_tag "id", params['id'] %>
+        <%= select_tag "year", options_for_select([['2018-2019','0'],
+                                                                   ['2019-2020','1'],
+                                                                   ['2020-2021','2'],
+                                                                   ['2021-2022','3']]), {prompt: "Filter Year", class: "custom-select", required: true } %>
+        </br>
+      </br>
+        <%= submit_tag "Submit" %>
+        <% end %>
+      </br>
     <% else %>
     </br>
     </br>
