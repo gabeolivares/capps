@@ -27,6 +27,8 @@
     </br>
       <%= submit_tag "Submit" %>
       <% end %>
+    </br>
+  </br>
       <% @tournament.each do |t| %>
         <% if user_signed_in? %>
           <h3><%= link_to t.name, {:action => "show_bracket", :id => t.id,  :sport_id => @sport.id} %><h3>
