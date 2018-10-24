@@ -6,10 +6,12 @@ class AllSportsController < ApplicationController
     if params[:id] == "10"
       @sport = Sport.find(4)
       @sport[:name] = "Boys & Girls Basketball"
-      @game = Game.where(sport: [4,5]).sort_by{|ev| [ev.time.strftime('%Y'),ev.time.strftime('%m/%d/%Y'),ev.location,ev.time.strftime('%H:%M')]}
+      #CHANGE THIS AFTER SCHOOL YEAR
+      @game = Game.where(sport: [4,5], time: DateTime.new(2018,07,1)..DateTime.new(2019,06,1)).sort_by{|ev| [ev.time.strftime('%Y'),ev.time.strftime('%m/%d/%Y'),ev.location,ev.time.strftime('%H:%M')]}
     else
       @sport = Sport.find(params[:id])
-      @game = Game.where(sport: params[:id]).sort_by{|ev| [ev.time.strftime('%Y'),ev.time.strftime('%m/%d/%Y'),ev.location,ev.time.strftime('%H:%M')]}
+      #CHANGE THIS AFTER SCHOOL YEAR
+      @game = Game.where(sport: params[:id], time: DateTime.new(2018,07,1)..DateTime.new(2019,06,1)).sort_by{|ev| [ev.time.strftime('%Y'),ev.time.strftime('%m/%d/%Y'),ev.location,ev.time.strftime('%H:%M')]}
     end
   end
 end

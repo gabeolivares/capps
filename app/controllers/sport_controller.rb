@@ -73,7 +73,8 @@ class SportController < ApplicationController
     @division_grade_id = params[:division_grade]
     @division_id = Division.find_by(name: @division_name, grade: @division_grade_id)
 
-    @games = Game.where(division: @division_id, sport: params[:id]).order(:time)
+    #CHANGE THIS AFTER SCHOOL YEAR
+    @games = Game.where(division: @division_id, sport: params[:id], time: DateTime.new(2018,07,1)..DateTime.new(2019,06,1)).order(:time)
     @sport = Sport.find(params[:id])
 
     @teams = []
@@ -174,8 +175,10 @@ class SportController < ApplicationController
      @division_grade_id = params[:division_grade]
      @division_id = Division.find_by(name: @division_name, grade: @division_grade_id)
      @school = School.find(params[:school_id]).name
-     @games = Game.where("(opp1 = ? or opp2 = ?) and (division = ? and sport = ?)",
-                   params[:school_id], params[:school_id], @division_id, params[:sport_id]).order(:time)
+     #CHANGE THIS AFTER SCHOOL YEAR
+     @games = Game.where("(opp1 = ? or opp2 = ?) and (division = ? and sport = ?) and (time between (?) and (?))",
+                   params[:school_id], params[:school_id], @division_id, params[:sport_id], DateTime.new(2018,07,1), DateTime.new(2019,06,1)).order(:time)
+
    end
 
    def delete

@@ -1,0 +1,113 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1><%= @sport.name %></h1>
+    <hr class="my-4">
+    <%= image_tag(@sport.id, size: "100x100", style:"text-align:center") %>
+    <h4 style="text-align:left;"> 5th/6th Grade:</h4>
+    <ul class="pagination">
+      <% @divisions_one.each do |d| %>
+      <li class="page-item">
+        <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+      </li>
+      <% end %>
+    </ul>
+  </br>
+  <h4 style="text-align:left;"> 7th/8th Grade:</h4>
+    <ul class="pagination">
+      <% @divisions_two.each do |d| %>
+      <li class="page-item">
+        <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+      </li>
+      <% end %>
+    </ul>
+    <% unless @division_name.blank? %>
+      <h1>Division: <%= @division_name %> </h1>
+    <% end %>
+    <% unless @division_grade.blank? %>
+      <h1>Grade: <%= @division_grade %></h1>
+    <% end %>
+    <% unless @year.blank? %>
+      <h1>Year: <%= @year %></h1>
+    <% end %>
+    <%= form_tag( '/archives/show', :method => :get ) do %>
+    <%= hidden_field_tag "division_name", params['division_name'] %>
+    <%= hidden_field_tag "division_grade", params['division_grade'] %>
+    <%= hidden_field_tag "id", params['id'] %>
+      <%= select_tag "year", options_for_select([['2018-2019','0'],
+                                                                 ['2019-2020','1'],
+                                                                 ['2020-2021','2'],
+                                                                 ['2021-2022','3']]), {prompt: "Filter Year", class: "custom-select", required: true } %>
+      </br>
+    </br>
+      <%= submit_tag "Submit" %>
+      <% end %>
+    <% unless @games.blank? %>
+      <% unless @division_name.blank? && @division_grade.blank? %>
+      <br>
+
+        <h5 style="text-align:center; font-family: 'Michroma', sans-serif;"> <%= @division_grade %> <%= @division_name %>  Conference Standings</h5>
+        <table class="table table-hover">
+          <thead>
+            <tr class="table-light">
+              <th scope="col">Team</th>
+              <th scope="col">Wins</th>
+              <th scope="col">Losses</th>
+              <th scope="col">Ties</th>
+              <th scope="col">Winning %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% sorted_team = @teams.sort_by{|k| -k[:percentage] } %>
+            <% sorted_team.each do |t| %>
+                <tr class="table-light">
+                  <td><%= t[:school] %></td>
+                  <td><%= t[:wins] %></td>
+                  <td><%= t[:losses] %></td>
+                  <td><%= t[:ties] %></td>
+                  <td><%= t[:percentage]%>%</td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+       <% end %>
+      <% end %>
+
+</br>
+<% if @games.blank? %>
+  <h5>There are not any games currently scheduled.</h5>
+<% else %>
+<br>
+<h5 style="text-align:center; font-family: 'Michroma', sans-serif;">Games</h5>
+  <hr class="my-4">
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-light">
+        <th scope="col">Date</th>
+        <th scope="col">Location</th>
+        <th scope="col">Time</th>
+        <th scope="col">Team 1</th>
+        <th scope="col">Team 1 Score</th>
+        <th scope="col">Team 2</th>
+        <th scope="col">Team 2 Score</th>
+        <th scope="col">Conf</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |g| %>
+      <tr class="table-light">
+        <td><%= g.time.strftime("%a %B %d, %Y") %></td>
+        <td><%= Location.where(id: g.location).first.name %></td>
+        <td><%= g.time.strftime("%I:%M %p") %></td>
+        <td><%= Team.where(id: g.opp1).first.name %></td>
+        <td><%= g.score_opp1 %></td>
+        <td><%= Team.where(id: g.opp2).first.name %></td>
+        <td><%= g.score_opp2 %></td>
+        <td><%= g.confrence ? "Y" : "N" %></td>
+
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+  </div>
+  </div>

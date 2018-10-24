@@ -1,0 +1,46 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1><%= @sport.name %></h1>
+    <hr class="my-4">
+    <%= image_tag(@sport.id, size: "100x100", style:"text-align:center") %>
+    <% if @tournament.blank? %>
+  </br>
+      <h5>There are not any tournaments currently scheduled.</h5>
+    <% else %>
+    </br>
+    </br>
+    </br>
+    <h2> Tournaments </h2>
+    <hr class="my-4">
+    <% unless @year.blank? %>
+      <h1>Year: <%= @year %></h1>
+    <% end %>
+    <%= form_tag( '/archives/show_tournament', :method => :get ) do %>
+    <%= hidden_field_tag "division_name", params['division_name'] %>
+    <%= hidden_field_tag "division_grade", params['division_grade'] %>
+    <%= hidden_field_tag "id", params['id'] %>
+      <%= select_tag "year", options_for_select([['2018-2019','0'],
+                                                                 ['2019-2020','1'],
+                                                                 ['2020-2021','2'],
+                                                                 ['2021-2022','3']]), {prompt: "Filter Year", class: "custom-select", required: true } %>
+      </br>
+    </br>
+      <%= submit_tag "Submit" %>
+      <% end %>
+      <% @tournament.each do |t| %>
+        <% if user_signed_in? %>
+          <h3><%= link_to t.name, {:action => "show_bracket", :id => t.id,  :sport_id => @sport.id} %><h3>
+          </br>
+        <% end %>
+        <% if !user_signed_in? && t.visible == true %>
+          <h3><%= link_to t.name, {:action => "show_bracket", :id => t.id,  :sport_id => @sport.id} %><h3>
+          </br>
+        <% end %>
+      <% end %>
+    <% end %>
+  </br>
+    </br>
+    </br>
+        <%= link_to "Back", archives_index_path, class:"btn btn-danger btn-lg btn-block" %>
+  </div>
+  </div>

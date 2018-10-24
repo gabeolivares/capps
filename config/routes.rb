@@ -74,8 +74,16 @@ Rails.application.routes.draw do
   patch 'tournaments/update_tournament'
   get 'tournaments/delete', to: 'tournaments#delete'
 
-  #Rules
-    get 'sport_rules/index'
+#Rules
+  get 'sport_rules/index'
+
+#All AllSports
+  get 'archives/index'
+  get 'archives', to: 'archives#index'
+  get 'archives/list'
+  get 'archives/show'
+  get 'archives/show_tournament'
+  get 'archives/show_bracket'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
