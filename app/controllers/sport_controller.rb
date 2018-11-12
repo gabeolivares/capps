@@ -13,7 +13,7 @@ class SportController < ApplicationController
     teams = []
     @team_cycle.each do |t|
       if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id).count == 2
-        if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false)
+        if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).count == 1
           teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).first
           teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_two: true, hidden: false).first
         else
@@ -23,15 +23,37 @@ class SportController < ApplicationController
         teams << Team.where(primary: true, school_id: t.school_id).first
       end
     end
-    @teams = teams
+    @teams = teams.sort_by!{ |e| e.name.downcase }
     @sport = Sport.new
   end
 
   def edit
     div_name = params['division_name']
     div_grade = params['division_grade']
+    sport_id =  params['sport_id']
     @division = Division.find_by(name: div_name, grade: div_grade)
     game_id = params['game_id']
+    @team_cycle = Team.where(primary: true)
+    teams = []
+    puts @team_cycle.inspect
+    @team_cycle.each do |t|
+      if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id).count == 2
+        puts "---"
+        puts Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).count == 1
+        if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).count == 1
+          puts "here"
+          teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).first
+          teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_two: true, hidden: false).first
+        else
+          teams << Team.where(primary: true, school_id: t.school_id).first
+        end
+      else
+        teams << Team.where(primary: true, school_id: t.school_id).first
+      end
+    end
+    puts teams
+    puts "----"
+    @teams = teams.sort_by!{ |e| e.name.downcase }
     @game = Game.find(game_id)
   end
 

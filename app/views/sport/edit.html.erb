@@ -4,7 +4,7 @@
   <%= form_for @game, :url =>{:action => "update", :id =>@game} do |f| %>
     <div class="field" style="text-align: left;">
       <label for = "opponent1">Opponent 1</label>:
-      <%= collection_select(:game, :opp1, Team.all.order(:name), :id, :name, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
+      <%= collection_select(:game, :opp1, @teams, :id, :name, {prompt: "Select Opponent 1"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "message_body">Opponent 1 Score</label>:
@@ -12,7 +12,7 @@
     </div>
     <div class="field" style="text-align: left;">
       <label for = "opponent2">Opponent 2</label>:
-      <%= collection_select(:game, :opp2, Team.all.order(:name), :id, :name, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
+      <%= collection_select(:game, :opp2, @teams, :id, :name, {prompt: "Select Opponent 2"}, {class: "custom-select", required: true}) %>
     </div>
     <div class="field" style="text-align: left;">
       <label for = "message_body">Opponent 2 Score</label>:

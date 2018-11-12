@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
     @sport = Sport.find(params[:id])
 
     unless @division_id.blank?
-      @teams = Team.where(primary: true)
+      @teams = Team.where(primary: true).order(:name)
     end
   end
 
@@ -45,10 +45,15 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    div_name = params['division_name']
     school_id = params['school_id']
+    div_grade = params['division_grade']
+    school_id = params['school_id']
+    sport_id = params['sport_id']
+    @division = Division.find_by(name: div_name, grade: div_grade)
     @team = Team.where(school_id: school_id, primary: true).first
-    @team1 = Team.where(school_id: school_id, team_one: true).first
-    @team2 = Team.where(school_id: school_id, team_two: true).first
+    @team1 = Team.where(school_id: school_id, team_one: true, division: @division.id, sport_id: sport_id).first
+    @team2 = Team.where(school_id: school_id, team_two: true, division: @division.id, sport_id: sport_id).first
     puts @team1.name
     puts @team2.name
   end
