@@ -4,12 +4,33 @@ class SportController < ApplicationController
   end
 
   def new
+    div_name = params['division_name']
+    div_grade = params['division_grade']
+    sport_id =  params['sport_id']
+    @division = Division.find_by(name: div_name, grade: div_grade)
     @locations = Location.all.order(:name)
-
-   @sport = Sport.new
+    @team_cycle = Team.where(primary: true)
+    teams = []
+    @team_cycle.each do |t|
+      if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id).count == 2
+        if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false)
+          teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).first
+          teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_two: true, hidden: false).first
+        else
+          teams << Team.where(primary: true, school_id: t.school_id).first
+        end
+      else
+        teams << Team.where(primary: true, school_id: t.school_id).first
+      end
+    end
+    @teams = teams
+    @sport = Sport.new
   end
 
   def edit
+    div_name = params['division_name']
+    div_grade = params['division_grade']
+    @division = Division.find_by(name: div_name, grade: div_grade)
     game_id = params['game_id']
     @game = Game.find(game_id)
   end

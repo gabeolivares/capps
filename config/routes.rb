@@ -84,6 +84,15 @@ Rails.application.routes.draw do
   get 'archives/show'
   get 'archives/show_tournament'
   get 'archives/show_bracket'
+
+  get 'teams/index'
+  get 'teams', to: 'teams#index'
+  get 'teams/list'
+  get 'teams/show'
+  get 'teams/new'
+  post 'teams/create'
+  get 'teams/edit'
+  patch 'teams/update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

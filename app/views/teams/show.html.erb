@@ -1,0 +1,78 @@
+<div id="sport-container">
+  <div id="sport-title">
+    <h1><%= @sport.name %></h1>
+    <hr class="my-4">
+    <%= image_tag(@sport.id, size: "100x100", style:"text-align:center") %>
+        <h4 style="text-align:left;"> 5th/6th Grade:</h4>
+        <ul class="pagination">
+          <% @divisions_one.each do |d| %>
+          <li class="page-item">
+            <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+          </li>
+          <% end %>
+        </ul>
+      </br>
+      <h4 style="text-align:left;"> 7th/8th Grade:</h4>
+        <ul class="pagination">
+          <% @divisions_two.each do |d| %>
+          <li class="page-item">
+            <%= link_to d.name, {:action => "show", :id => @sport.id, :division_name => d.name, :division_grade => d.grade}, class:"page-link" %>
+          </li>
+          <% end %>
+        </ul>
+        <% unless @division_name.blank? %>
+          <h1>Division: <%= @division_name %> </h1>
+        <% end %>
+        <% unless @division_grade.blank? %>
+          <h1>Grade: <%= @division_grade %><h1>
+        <% end %>
+        <% unless @teams.blank? %>
+          <h1 style="text-align:center;font-family: 'Michroma', sans-serif;">Schools</h1>
+            <hr class="my-4">
+             <table class="table table-hover">
+               <thead>
+                 <tr class="table-light">
+                   <th scope="col">Name</th>
+                   <th scope="col">Teams</th>
+                   <th scope="col">Show Split Teams</th>
+                   <th scope="col"></th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <% @teams.each do |t| %>
+                 <tr class="table-light">
+                   <th scope="row"><%= t.name %></th>
+                   <td>
+                     <% if !Team.where(primary: false, team_one: true, school_id: t.school_id, sport_id: @sport.id, division: @division_id.id).pluck(:name).uniq.first.blank? && !Team.where(primary: false, team_two: true, school_id: t.school_id, sport_id: @sport.id, division: @division_id.id).pluck(:name).uniq.first.blank? %>
+                       <%= Team.where(primary: false, team_one: true, school_id: t.school_id, sport_id: @sport.id, division: @division_id.id).pluck(:name).uniq.first %> &
+                       <%= Team.where(primary: false, team_two: true, school_id: t.school_id, sport_id: @sport.id, division: @division_id.id).pluck(:name).uniq.first %>
+                       <% end %>
+                   </td>
+                   <td>
+
+                     <% if t.hidden == true && !Team.where(primary: false, team_one: true, school_id: t.school_id, sport_id: @sport.id, division: @division_id.id).pluck(:name).uniq.first.blank?%>
+                       Yes
+                     <% else %>
+                      No
+                     <% end %>
+                   </td>
+                  <% if Team.where(school_id: t.school_id, sport_id: @sport.id, division: @division_id.id).count == 2  && !Team.where(primary: false, team_one: true, school_id: t.school_id, sport_id: @sport.id, division: @division_id.id).pluck(:name).uniq.first.nil? %>
+                    <td>
+                      <% unless @division_name.blank? && @division_grade.blank? %>
+                        <%= link_to "Edit Split Team", {:action => 'edit', :division_name => @division_name, :division_grade => @division_grade_id , :school_id => t.school_id, :sport_id => @sport.id}, class:"btn btn-primary btn-lg"%>
+                      <% end %>
+                    </td>
+                  <% else %>
+                    <td>
+                      <% unless @division_name.blank? && @division_grade.blank? %>
+                        <%= link_to "Split Team", {:action => 'new', :division_name => @division_name, :division_grade => @division_grade_id , :school_id => t.school_id, :sport_id => @sport.id}, class:"btn btn-primary btn-lg"%>
+                      <% end %>
+                    </td>
+                  <% end %>
+                 </tr>
+                 <% end %>
+               </tbody>
+             </table>
+        <% end %>
+    </div>
+  </div>

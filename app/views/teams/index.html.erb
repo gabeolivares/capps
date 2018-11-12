@@ -1,0 +1,17 @@
+<div id="sport-container">
+  <h1 style="text-align:center; font-family: 'Michroma', sans-serif; ">Split Teams</h1>
+  </br>
+  <% @sport.each do |s| %>
+  <div class="card border-primary mb-3 school-box">
+     <div class="card-body">
+
+        <%= image_tag(s.id, size: "100x100", style: " float: left; margin-right: 2%;") %>
+        <h1><%= s.name %></h1>
+        <%= link_to 'View Teams', {:action => "show", :id => s.id}, class:"btn btn-primary btn-lg" %>
+     </br>
+   </div>
+   </div>
+  <% end %>
+  </br>
+  </br>
+</div>
