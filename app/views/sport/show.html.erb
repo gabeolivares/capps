@@ -87,7 +87,7 @@
               <% @games.each do |g| %>
               <tr class="table-light">
                 <td><%= g.time.strftime("%a %B %d, %Y") %></td>
-                <td><%= Location.where(id: g.location).first.name %></td>
+                <td><a href="http://maps.google.com/maps?q=<%= Location.where(id: g.location).first.address1 %><%= Location.where(id: g.location).first.address2 %>" target="_blank"><%= Location.where(id: g.location).first.name  %></a></td>
                 <td><%= g.time.strftime("%I:%M %p") %></td>
                 <td><%= Team.where(id: g.opp1).first.name %></td>
                 <td><%= g.score_opp1 %></td>

@@ -35,13 +35,9 @@ class SportController < ApplicationController
     game_id = params['game_id']
     @team_cycle = Team.where(primary: true)
     teams = []
-    puts @team_cycle.inspect
     @team_cycle.each do |t|
       if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id).count == 2
-        puts "---"
-        puts Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).count == 1
         if Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).count == 1
-          puts "here"
           teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_one: true, hidden: false).first
           teams << Team.where(school_id: t.school_id, sport_id: sport_id, division: @division.id, team_two: true, hidden: false).first
         else
@@ -51,8 +47,6 @@ class SportController < ApplicationController
         teams << Team.where(primary: true, school_id: t.school_id).first
       end
     end
-    puts teams
-    puts "----"
     @teams = teams.sort_by!{ |e| e.name.downcase }
     @game = Game.find(game_id)
   end
@@ -217,7 +211,7 @@ class SportController < ApplicationController
      @division_name = params[:division_name]
      @division_grade_id = params[:division_grade]
      @division_id = Division.find_by(name: @division_name, grade: @division_grade_id)
-     @school = School.find(params[:school_id]).name
+     @school = Team.find(params[:school_id]).name
      #CHANGE THIS AFTER SCHOOL YEAR
      @games = Game.where("(opp1 = ? or opp2 = ?) and (division = ? and sport = ?) and (time between (?) and (?))",
                    params[:school_id], params[:school_id], @division_id, params[:sport_id], DateTime.new(2018,07,1), DateTime.new(2019,06,1)).order(:time)
