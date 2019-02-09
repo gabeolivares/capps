@@ -84,21 +84,24 @@ class SportController < ApplicationController
     game_id = params[:id]
     @division = Division.find_by(name: div_name, grade: div_grade)
 
+    unless (params['game']['time(1i)'] == "" || params['game']['time(2i)'] == "" || params['game']['time(3i)'] == "")
+      game = game_update_param
+      game[:division] = @division.id
+      game[:sport] = sport_id
 
-    game = game_update_param
-    game[:division] = @division.id
-    game[:sport] = sport_id
+      @game = Game.find(game_id)
 
-    @game = Game.find(game_id)
-
-    if @game.update_attributes(game)
-       redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      if @game.update_attributes(game)
+         redirect_to :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      else
+         @game = Game.all
+         flash[:error] = "We were unable to update the game. Please make sure all fields are filled."
+         render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      end
     else
-       @game = Game.all
-       flash[:error] = "We were unable to update the game. Please make sure all fields are filled."
-       render :action => 'show', :id => sport_id, :division_id => sport_id, :division_grade => div_grade, :division_name => div_name
+      flash[:error] = "We were unable to create the game. Please make sure all fields are filled."
+      redirect_to :back
     end
-
   end
 
   def show
