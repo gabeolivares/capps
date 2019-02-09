@@ -15,7 +15,7 @@
     </br>
     <%= datetime_select("message", "start_date", prompt: {
               day: 'Select day', month: 'Select month', year: 'Select year'
-            }, start_year: Time.now.year, order: [:month, :day, :year, :hour,:minute], ampm: true, required: true, class:"form-control form-control-lg" ) %>
+            }, start_year: Time.new.year - 2, end_year: Time.new.year + 4, order: [:month, :day, :year, :hour,:minute], ampm: true, required: true, class:"form-control form-control-lg" ) %>
     </br>
     </div>
     <div class="field" style="text-align: left;">
@@ -23,7 +23,7 @@
     </br>
     <%= datetime_select("message", "end_date", prompt: {
               day: 'Select day', month: 'Select month', year: 'Select year'
-            }, start_year: Time.now.year, order: [:month, :day, :year, :hour,:minute], ampm: true, required: true) %>
+            }, start_year: Time.new.year - 2, end_year: Time.new.year + 4, order: [:month, :day, :year, :hour,:minute], ampm: true, required: true) %>
     </br>
     </div>
     <div class="field" style="text-align: left;">

@@ -14,7 +14,7 @@
           <h4>Game #1</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-            <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+            <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#1  <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil?%></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -26,7 +26,7 @@
           <h4>Game #2</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-            <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+            <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#2 <%= Team.where(id: @game_2.opp1).first.name  if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -41,7 +41,7 @@
         <h4>Game #3</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-          <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+          <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 > @game_3.score_opp2 %>">
             <div class="bracket-name">  <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
           </div>
@@ -61,7 +61,7 @@
           <h4>Game #3</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-            <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+            <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? && @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">  <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -74,7 +74,7 @@
           <h4>Game #1</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-            <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+            <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#1  <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil?%></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -86,7 +86,7 @@
           <h4>Game #2</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-            <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+            <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? && @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#2 <%= Team.where(id: @game_2.opp1).first.name  if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -101,7 +101,7 @@
         <h4>Game #4</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-            <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+            <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? && @game_4.score_opp1 > @game_4.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
             </div>
@@ -118,7 +118,7 @@
           <h4>Game #1</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-            <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+            <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#4  <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -131,7 +131,7 @@
           <h4>Game #2</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-            <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+            <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#1  <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -143,7 +143,7 @@
           <h4>Game #3</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-            <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+            <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">#2 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -158,7 +158,7 @@
         <h4>Game #4</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-          <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+          <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
             <div class="bracket-name"><%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
           </div>
@@ -175,7 +175,7 @@
           <h4>Game #1</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-            <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+            <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#4 <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -187,7 +187,7 @@
           <h4>Game #2</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-            <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+            <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#3 <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -200,7 +200,7 @@
           <h4>Game #3</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-            <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+            <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">#1 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -212,7 +212,7 @@
           <h4>Game #4</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-            <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+            <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
               <div class="bracket-name">#2 <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
             </div>
@@ -227,7 +227,7 @@
         <h4>Game #5</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_5.location).first.name if !@game_5.location.nil? %></h5>
-            <h5>Time: <%= @game_5.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_5.time.nil? %></h5>
+            <h5>Time: <%= @game_5.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_5.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
               </div>
@@ -245,7 +245,7 @@
           <h4>Game #1</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-            <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+            <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#4 <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -257,7 +257,7 @@
           <h4>Game #2</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-            <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+            <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#3 <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -270,7 +270,7 @@
           <h4>Game #3</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-            <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+            <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">#1 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -282,7 +282,7 @@
           <h4>Game #4</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-            <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+            <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
               <div class="bracket-name">#2 <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
             </div>
@@ -297,7 +297,7 @@
         <h4>Game #5</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_5.location).first.name if !@game_5.location.nil? %></h5>
-            <h5>Time: <%= @game_5.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_5.time.nil? %></h5>
+            <h5>Time: <%= @game_5.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_5.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
             </div>
@@ -317,7 +317,7 @@
         <h4>Game #6</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_6.location).first.name if !@game_6.location.nil? %></h5>
-          <h5>Time: <%= @game_6.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_6.time.nil? %></h5>
+          <h5>Time: <%= @game_6.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_6.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
           </div>
@@ -329,7 +329,7 @@
         <h4>Game #7</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_7.location).first.name if !@game_7.location.nil? %></h5>
-          <h5>Time: <%= @game_7.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_7.time.nil? %></h5>
+          <h5>Time: <%= @game_7.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_7.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
             </div>
@@ -344,7 +344,7 @@
       <h4>Game #8</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_8.location).first.name if !@game_8.location.nil? %></h5>
-        <h5>Time: <%= @game_8.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_8.time.nil? %></h5>
+        <h5>Time: <%= @game_8.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_8.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? &&  @game_8.score_opp1 > @game_8.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_8.opp1).first.name if !@game_8.opp1.nil? %></div><div class="bracket-score"><%= @game_8.score_opp1.nil? ? "--" : @game_8.score_opp1 %></div>
           </div>
@@ -362,7 +362,7 @@
         <h4>Game #1</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-          <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+          <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#4 <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -374,7 +374,7 @@
         <h4>Game #2</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-          <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+          <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#3 <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -386,7 +386,7 @@
         <h4>Game #3</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-          <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+          <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">#2 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -399,7 +399,7 @@
         <h4>Game #4</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-          <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+          <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
               <div class="bracket-name">#1 <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
             </div>
@@ -413,7 +413,7 @@
       <h4>Game #5</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_5.location).first.name if !@game_5.location.nil? %></h5>
-        <h5>Time: <%= @game_5.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_5.time.nil? %></h5>
+        <h5>Time: <%= @game_5.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_5.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
           </div>
@@ -430,7 +430,7 @@
         <h4>Game #6</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_6.location).first.name if !@game_6.location.nil? %></h5>
-          <h5>Time: <%= @game_6.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_6.time.nil? %></h5>
+          <h5>Time: <%= @game_6.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_6.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
             </div>
@@ -448,7 +448,7 @@
         <h4>Game #1</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-          <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+          <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#4 <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -460,7 +460,7 @@
         <h4>Game #2</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-          <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+          <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#3 <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -472,7 +472,7 @@
         <h4>Game #3</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-          <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+          <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">#2 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -485,7 +485,7 @@
         <h4>Game #4</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-          <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+          <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
               <div class="bracket-name">#1 <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
             </div>
@@ -499,7 +499,7 @@
       <h4>Game #5</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_5.location).first.name if !@game_5.location.nil? %></h5>
-        <h5>Time: <%= @game_5.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_5.time.nil? %></h5>
+        <h5>Time: <%= @game_5.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_5.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
           </div>
@@ -516,7 +516,7 @@
       <h4>Game #10</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_10.location).first.name if !@game_10.location.nil? %></h5>
-        <h5>Time: <%= @game_10.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_10.time.nil? %></h5>
+        <h5>Time: <%= @game_10.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_10.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_10.score_opp1.nil? && !@game_10.score_opp2.nil? &&  @game_10.score_opp1 > @game_10.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_10.opp1).first.name if !@game_10.opp1.nil? %></div><div class="bracket-score"><%= @game_10.score_opp1.nil? ? "--" : @game_10.score_opp1 %></div>
           </div>
@@ -538,7 +538,7 @@
         <h4>Game #6</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_6.location).first.name if !@game_6.location.nil? %></h5>
-          <h5>Time: <%= @game_6.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_6.time.nil? %></h5>
+          <h5>Time: <%= @game_6.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_6.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
             </div>
@@ -551,7 +551,7 @@
         <h4>Game #8</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_8.location).first.name if !@game_8.location.nil? %></h5>
-          <h5>Time: <%= @game_8.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_8.time.nil? %></h5>
+          <h5>Time: <%= @game_8.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_8.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? &&  @game_8.score_opp1 > @game_8.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_8.opp1).first.name if !@game_8.opp1.nil? %></div><div class="bracket-score"><%= @game_8.score_opp1.nil? ? "--" : @game_8.score_opp1 %></div>
             </div>
@@ -563,7 +563,7 @@
         <h4>Game #7</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_7.location).first.name if !@game_7.location.nil? %></h5>
-          <h5>Time: <%= @game_7.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_7.time.nil? %></h5>
+          <h5>Time: <%= @game_7.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_7.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
             </div>
@@ -579,7 +579,7 @@
       <h4>Game #9</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_9.location).first.name if !@game_9.location.nil? %></h5>
-        <h5>Time: <%= @game_9.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_9.time.nil? %></h5>
+        <h5>Time: <%= @game_9.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_9.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_9.score_opp1.nil? && !@game_9.score_opp2.nil? &&  @game_9.score_opp1 > @game_9.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_9.opp1).first.name if !@game_9.opp1.nil? %></div><div class="bracket-score"><%= @game_9.score_opp1.nil? ? "--" : @game_9.score_opp1 %></div>
           </div>
@@ -596,7 +596,7 @@
         <h4>Game #1</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-          <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+          <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#1 <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -608,7 +608,7 @@
         <h4>Game #2</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-          <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+          <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#4 <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -620,7 +620,7 @@
         <h4>Game #3</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-          <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+          <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">#3 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -632,7 +632,7 @@
       <h4>Game #4</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-        <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+        <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
             <div class="bracket-name">#2 <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
           </div>
@@ -651,7 +651,7 @@
         <h4>Game #5</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_5.location).first.name if !@game_5.location.nil? %></h5>
-          <h5>Time: <%= @game_5.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_5.time.nil? %></h5>
+          <h5>Time: <%= @game_5.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_5.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
             </div>
@@ -669,7 +669,7 @@
         <h4>Game #6</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_6.location).first.name if !@game_6.location.nil? %></h5>
-          <h5>Time: <%= @game_6.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_6.time.nil? %></h5>
+          <h5>Time: <%= @game_6.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_6.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
             </div>
@@ -686,7 +686,7 @@
       <h4>Game #7</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_7.location).first.name if !@game_7.location.nil? %></h5>
-        <h5>Time: <%= @game_7.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_7.time.nil? %></h5>
+        <h5>Time: <%= @game_7.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_7.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
           </div>
@@ -704,7 +704,7 @@
         <h4>Game #1</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_1.location).first.name if !@game_1.location.nil? %></h5>
-          <h5>Time: <%= @game_1.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_1.time.nil? %></h5>
+          <h5>Time: <%= @game_1.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_1.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_1.score_opp1.nil? && !@game_1.score_opp2.nil? &&  @game_1.score_opp1 > @game_1.score_opp2 %>">
               <div class="bracket-name">#1 <%= Team.where(id: @game_1.opp1).first.name if !@game_1.opp1.nil? %></div><div class="bracket-score"><%= @game_1.score_opp1.nil? ? "--" : @game_1.score_opp1 %></div>
             </div>
@@ -716,7 +716,7 @@
         <h4>Game #2</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_2.location).first.name if !@game_2.location.nil? %></h5>
-          <h5>Time: <%= @game_2.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_2.time.nil? %></h5>
+          <h5>Time: <%= @game_2.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_2.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_2.score_opp1.nil? && !@game_2.score_opp2.nil? &&  @game_2.score_opp1 > @game_2.score_opp2 %>">
               <div class="bracket-name">#4 <%= Team.where(id: @game_2.opp1).first.name if !@game_2.opp1.nil? %></div><div class="bracket-score"><%= @game_2.score_opp1.nil? ? "--" : @game_2.score_opp1 %></div>
             </div>
@@ -728,7 +728,7 @@
         <h4>Game #3</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_3.location).first.name if !@game_3.location.nil? %></h5>
-          <h5>Time: <%= @game_3.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_3.time.nil? %></h5>
+          <h5>Time: <%= @game_3.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_3.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_3.score_opp1.nil? && !@game_3.score_opp2.nil? &&  @game_3.score_opp1 > @game_3.score_opp2 %>">
               <div class="bracket-name">#3 <%= Team.where(id: @game_3.opp1).first.name if !@game_3.opp1.nil? %></div><div class="bracket-score"><%= @game_3.score_opp1.nil? ? "--" : @game_3.score_opp1 %></div>
             </div>
@@ -740,7 +740,7 @@
       <h4>Game #4</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_4.location).first.name if !@game_4.location.nil? %></h5>
-        <h5>Time: <%= @game_4.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_4.time.nil? %></h5>
+        <h5>Time: <%= @game_4.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_4.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_4.score_opp1.nil? && !@game_4.score_opp2.nil? &&  @game_4.score_opp1 > @game_4.score_opp2 %>">
             <div class="bracket-name">#2 <%= Team.where(id: @game_4.opp1).first.name if !@game_4.opp1.nil? %></div><div class="bracket-score"><%= @game_4.score_opp1.nil? ? "--" : @game_4.score_opp1 %></div>
           </div>
@@ -759,7 +759,7 @@
         <h4>Game #5</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_5.location).first.name if !@game_5.location.nil? %></h5>
-          <h5>Time: <%= @game_5.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_5.time.nil? %></h5>
+          <h5>Time: <%= @game_5.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_5.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_5.score_opp1.nil? && !@game_5.score_opp2.nil? &&  @game_5.score_opp1 > @game_5.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_5.opp1).first.name if !@game_5.opp1.nil? %></div><div class="bracket-score"><%= @game_5.score_opp1.nil? ? "--" : @game_5.score_opp1 %></div>
             </div>
@@ -777,7 +777,7 @@
         <h4>Game #6</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_6.location).first.name if !@game_6.location.nil? %></h5>
-          <h5>Time: <%= @game_6.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_6.time.nil? %></h5>
+          <h5>Time: <%= @game_6.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_6.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_6.score_opp1.nil? && !@game_6.score_opp2.nil? &&  @game_6.score_opp1 > @game_6.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_6.opp1).first.name if !@game_6.opp1.nil? %></div><div class="bracket-score"><%= @game_6.score_opp1.nil? ? "--" : @game_6.score_opp1 %></div>
             </div>
@@ -794,7 +794,7 @@
       <h4>Game #7</h4>
       <div class="bracket-matchup">
         <h5>Location: <%= Location.where(id: @game_7.location).first.name if !@game_7.location.nil? %></h5>
-        <h5>Time: <%= @game_7.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_7.time.nil? %></h5>
+        <h5>Time: <%= @game_7.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_7.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_7.score_opp1.nil? && !@game_7.score_opp2.nil? &&  @game_7.score_opp1 > @game_7.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_7.opp1).first.name if !@game_7.opp1.nil? %></div><div class="bracket-score"><%= @game_7.score_opp1.nil? ? "--" : @game_7.score_opp1 %></div>
           </div>
@@ -812,7 +812,7 @@
           <h4>Game #11</h4>
           <div class="bracket-matchup">
             <h5>Location: <%= Location.where(id: @game_11.location).first.name if !@game_11.location.nil? %></h5>
-            <h5>Time: <%= @game_11.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_11.time.nil? %></h5>
+            <h5>Time: <%= @game_11.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_11.time.nil? %></h5>
               <div class="bracket-team <%= 'winner' if !@game_11.score_opp1.nil? && !@game_11.score_opp2.nil? &&  @game_11.score_opp1 > @game_11.score_opp2 %>">
                 <div class="bracket-name"> <%= Team.where(id: @game_11.opp1).first.name if !@game_11.opp1.nil? %></div><div class="bracket-score"><%= @game_11.score_opp1.nil? ? "--" : @game_11.score_opp1 %></div>
               </div>
@@ -832,7 +832,7 @@
         <h4>Game #8</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_8.location).first.name if !@game_8.location.nil? %></h5>
-          <h5>Time: <%= @game_8.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_8.time.nil? %></h5>
+          <h5>Time: <%= @game_8.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_8.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_8.score_opp1.nil? && !@game_8.score_opp2.nil? &&  @game_8.score_opp1 > @game_8.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_8.opp1).first.name if !@game_8.opp1.nil? %></div><div class="bracket-score"><%= @game_8.score_opp1.nil? ? "--" : @game_8.score_opp1 %></div>
             </div>
@@ -844,7 +844,7 @@
       <h4>Game #9</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_9.location).first.name if !@game_9.location.nil? %></h5>
-          <h5>Time: <%= @game_9.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_9.time.nil? %></h5>
+          <h5>Time: <%= @game_9.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_9.time.nil? %></h5>
           <div class="bracket-team <%= 'winner' if !@game_9.score_opp1.nil? && !@game_9.score_opp2.nil? &&  @game_9.score_opp1 > @game_9.score_opp2 %>">
             <div class="bracket-name"> <%= Team.where(id: @game_9.opp1).first.name if !@game_9.opp1.nil? %></div><div class="bracket-score"><%= @game_9.score_opp1.nil? ? "--" : @game_9.score_opp1 %></div>
           </div>
@@ -859,7 +859,7 @@
         <h4>Game #10</h4>
         <div class="bracket-matchup">
           <h5>Location: <%= Location.where(id: @game_10.location).first.name if !@game_10.location.nil? %></h5>
-          <h5>Time: <%= @game_10.time.strftime("%A %B %d, %Y at %I:%M %p") if !@game_10.time.nil? %></h5>
+          <h5>Time: <%= @game_10.time.strftime("%a %d/%d/%Y at %I:%M %p") if !@game_10.time.nil? %></h5>
             <div class="bracket-team <%= 'winner' if !@game_10.score_opp1.nil? && !@game_10.score_opp2.nil? &&  @game_10.score_opp1 > @game_10.score_opp2 %>">
               <div class="bracket-name"> <%= Team.where(id: @game_10.opp1).first.name if !@game_10.opp1.nil? %></div><div class="bracket-score"><%= @game_10.score_opp1.nil? ? "--" : @game_10.score_opp1 %></div>
             </div>

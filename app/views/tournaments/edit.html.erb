@@ -30,7 +30,7 @@
       </br>
       <%= datetime_select("tournament_game", "time", prompt: {
                 day: 'Select day', month: 'Select month', year: 'Select year'
-              }, start_year: Time.now.year, order: [:month, :day, :year, :hour,:minute], ampm: true, class:"form-control form-control-lg" ) %>
+              }, start_year: Time.new.year - 2, end_year: Time.new.year + 4, order: [:month, :day, :year, :hour,:minute], ampm: true, class:"form-control form-control-lg" ) %>
       </br>
     </div>
     </br>
