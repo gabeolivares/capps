@@ -12,7 +12,7 @@ class ArchivesController < ApplicationController
     @division_id = Division.find_by(name: @division_name, grade: @division_grade_id)
 
     #CHANGE THIS AFTER SCHOOL YEAR
-    @games = Game.where(division: @division_id, sport: params[:id], time: DateTime.new(2018,07,1)..DateTime.new(2019,06,1)).order(:time)
+    @games = Game.where(division: @division_id, sport: params[:id], time: DateTime.new(2019,07,1)..DateTime.new(2020,06,1)).order(:time)
     case params[:year]
     when '0'
       @year = "2018-2019"
