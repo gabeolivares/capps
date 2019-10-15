@@ -4,7 +4,8 @@ class TournamentsController < ApplicationController
   end
   def show
     @sport = Sport.find(params[:id])
-    @tournament = Tournament.where(sports_id:params[:id]).order(:name)
+    #CHANGE THIS AFTER SCHOOL YEAR
+    @tournament = Tournament.where(sports_id:params[:id],created_at: DateTime.new(2019,07,1)..DateTime.new(2020,06,1)).order(:name)
   end
   def new
   end
